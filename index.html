@@ -1334,7 +1334,8 @@
 
   // ===== Section highlighting (header links + phone section row) =====
   (function () {
-    var links = document.querySelectorAll('.nav-links a[href^="#"], .chips a');
+    // Only real section links (#promotions …): "Get the app" is href="#" and isn't a section.
+    var links = document.querySelectorAll('.nav-links a[href^="#"]:not([href="#"]), .chips a[href^="#"]:not([href="#"])');
     var chipsRow = document.querySelector(".chips");
     var sections = [];
     links.forEach(function (a) {
