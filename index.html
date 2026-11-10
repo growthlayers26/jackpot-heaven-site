@@ -534,6 +534,7 @@
   .closing h2 { font-size: clamp(40px, 6vw, 72px); }
   dialog#topup, dialog#signin { background: linear-gradient(180deg, rgba(255,255,255,.04), transparent), #0a1026; border-color: var(--line-strong); border-radius: 22px; }
   dialog#topup h2, dialog#signin h2 { font-size: 32px; }
+  .chips a.chip-app { color: var(--gold-hi); border-color: var(--gold); background: rgba(233,196,106,.08); }
   @media (max-width: 960px) { .strip ul.stats { grid-template-columns: 1fr 1fr; } .stats li:nth-child(3) { border-left: 0; } .stats li:nth-child(n+3) { border-top: 1px solid var(--line); } }
   @media (max-width: 760px) { section { padding: 80px 0; } .hero { padding: 48px 0 72px; } .stats li { padding: 18px 12px; gap: 10px; } .stats strong { font-size: 17px; } .nav { height: 64px; } }
 </style>
@@ -561,6 +562,7 @@
     </div>
   </div>
   <nav class="chips" aria-label="Sections">
+    <a href="#" class="chip-app" data-get-app hidden>Get the app</a>
     <a href="#promotions">Promotions</a>
     <a href="#games">Games</a>
     <a href="#reviews">Reviews</a>
@@ -983,6 +985,7 @@
           <li><a data-message href="#">Message us</a></li>
           <li><a data-facebook href="#" target="_blank" rel="noopener noreferrer">Facebook</a></li>
           <li><a href="#" data-signin-link hidden>Sign in</a></li>
+          <li><a href="#" data-get-app hidden>Get the app</a></li>
           <li><a href="privacy.html">Privacy policy</a></li>
         </ul>
       </div>
@@ -1007,6 +1010,11 @@
     </div>
     <button class="install-x" type="button" aria-label="Close" data-install-close>×</button>
   </div>
+  <ol class="install-steps" data-install-steps-android hidden>
+    <li>Tap the <b>⋮</b> menu at the top right of Chrome</li>
+    <li>Tap <b>Install app</b> or <b>Add to Home screen</b></li>
+    <li>Tap <b>Install</b> — done!</li>
+  </ol>
   <ol class="install-steps" data-install-steps hidden>
     <li>Tap <b>Share</b> <svg class="share-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 15V3m0 0L8 7m4-4 4 4"/><path d="M6 11H5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1h-1"/></svg> at the bottom of Safari</li>
     <li>Scroll down and tap <b>Add to Home Screen</b></li>
@@ -1279,8 +1287,9 @@
     var deferred = null, shown = false;
 
     function canShow() { return isPhone && !installed && !inApp && !recentlyDismissed; }
-    function show() {
-      if (shown || !canShow()) return;
+    function show(force) {
+      if (!force && (shown || !canShow())) return;
+      if (force) { shown = true; box.hidden = false; requestAnimationFrame(function () { box.classList.add("is-in"); }); return; }
       // Don't cover a panel the player is using; try again a bit later.
       if (document.querySelector("dialog[open]") || (window.$chatwoot && window.$chatwoot.isOpen)) { setTimeout(show, 5000); return; }
       shown = true; box.hidden = false;
@@ -1304,9 +1313,16 @@
         deferred.prompt();
         deferred.userChoice.then(function (r) { deferred = null; hide(r.outcome !== "accepted"); });
       } else {
-        box.querySelector("[data-install-steps]").hidden = false;
+        box.querySelector(/Android/.test(ua) ? "[data-install-steps-android]" : "[data-install-steps]").hidden = false;
         this.textContent = "Got it"; this.onclick = function () { hide(true); };
       }
+    });
+    // Always-there "Get the app" links (phones, not already running as the app), so installing
+    // never depends on the timed popup. Chrome won't fire its own prompt when it thinks the app
+    // is already installed from this address (e.g. the old casino), so the steps cover that too.
+    document.querySelectorAll("[data-get-app]").forEach(function (a) {
+      a.hidden = !isPhone || installed;
+      a.addEventListener("click", function (e) { e.preventDefault(); show(true); });
     });
     window.addEventListener("appinstalled", function () {
       hide(false); store(false, KEY, String(Date.now()));
