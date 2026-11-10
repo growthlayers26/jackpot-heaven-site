@@ -1028,8 +1028,8 @@
   //               Leave empty to turn the on-site chat off.
   var FACEBOOK_URL = "https://www.facebook.com/jackpotheaven";
   var MESSAGE_URL = "https://m.me/jackpotheaven";
-  var CHAT_URL = "";
-  var CHAT_TOKEN = "";
+  var CHAT_URL = "https://chat.jackpotheaven.online";
+  var CHAT_TOKEN = "g4maZrFzLGZDQLzNNCm8ZpSx";
   // PAYPAL_URL: your PayPal.me or PayPal payment link.  STRIPE_URL: your Stripe Payment Link.
   // An empty link shows that option as "Soon".
   var PAYPAL_URL = "https://www.paypal.com/ncp/payment/ER8BUFNE2TFGQ";
@@ -1037,7 +1037,7 @@
   // GOOGLE_CLIENT_ID: the Jackpot Heaven Google sign-in client ID. When set, players sign in
   // with Google before chatting, so their chat and its history follow them to any device.
   // Leave empty to keep the chat open to everyone (history then stays in that one browser).
-  var GOOGLE_CLIENT_ID = "";
+  var GOOGLE_CLIENT_ID = "775436362168-fbgr9fblrun9g7chidve3bn9kdiq6mdk.apps.googleusercontent.com";
   var AUTH_URL = CHAT_URL + "/jh-auth/google";
   // ======================
 
@@ -1174,7 +1174,7 @@
     if (renderGoogleButton() || gsiLoading) return;
     gsiLoading = true;
     var g = document.createElement("script");
-    g.src = "https://accounts.google.com/gsi/client";
+    g.src = "https://accounts.google.com/gsi/client?hl=en";
     g.async = true;
     g.onload = function () { renderGoogleButton(); };
     g.onerror = function () { gsiLoading = false; say("Google sign-in couldn't load. Check your connection and try again.", true); };
