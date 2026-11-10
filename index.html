@@ -1283,7 +1283,7 @@
     var installed = window.matchMedia("(display-mode: standalone)").matches || navigator.standalone === true;
     var inApp = /(FBAN|FBAV|FB_IAB|FBIOS|Instagram|MicroMessenger|Snapchat)|Line\//i.test(ua);
     var dismissedAt = +(store(true, KEY) || 0);
-    var recentlyDismissed = Date.now() - dismissedAt < 7 * 24 * 3600 * 1000;
+    var recentlyDismissed = Date.now() - dismissedAt < 24 * 3600 * 1000;
     var deferred = null, shown = false;
 
     function canShow() { return isPhone && !installed && !inApp && !recentlyDismissed; }
@@ -1303,9 +1303,10 @@
 
     window.addEventListener("beforeinstallprompt", function (e) {
       e.preventDefault(); deferred = e;               // keep Chrome's prompt for our button
-      if (canShow()) setTimeout(show, 6000);
     });
-    if (isIOSSafari && canShow()) setTimeout(show, 6000);
+    // Pop up on every phone visit (Android and iPhone alike) shortly after the page opens,
+    // unless it's already running as the app, inside Facebook/Instagram, or dismissed today.
+    if (canShow()) setTimeout(show, 2500);
 
     box.querySelectorAll("[data-install-close]").forEach(function (b) { b.addEventListener("click", function () { hide(true); }); });
     box.querySelector("[data-install-go]").addEventListener("click", function () {
