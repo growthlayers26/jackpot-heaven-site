@@ -20,7 +20,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&family=Cinzel:wght@700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@500;600&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #070b1f;
@@ -268,6 +268,7 @@
   .ticker:hover .ticker-track { animation-play-state: paused; }
   .ticker ul { display: flex; gap: 40px; margin: 0; padding: 9px 20px; list-style: none; font-size: 13px; font-weight: 600; white-space: nowrap; }
   .ticker li span { color: var(--gold); }
+  .ticker li::before { content: "\25C6"; color: var(--gold); opacity: .6; font-size: 8px; margin-right: 14px; vertical-align: 2px; }
   @keyframes ticker { to { transform: translateX(-50%); } }
 
   /* Hero offer pill */
@@ -431,7 +432,7 @@
   .hero h1 { background: linear-gradient(180deg, #fff6d8, #f4c13c 55%, #c98a14); -webkit-background-clip: text; background-clip: text; color: transparent; }
   .hero h1 em { color: inherit; }
   .hero { position: relative; overflow: hidden; isolation: isolate; }
-  .hero::before { content: ""; position: absolute; inset: -20%; z-index: -2; opacity: .55;
+  .hero::before { content: ""; position: absolute; inset: -20%; z-index: -2; opacity: .3;
     background:
       repeating-conic-gradient(from 0deg at 72% 40%, rgba(244,193,60,.10) 0deg 6deg, transparent 6deg 18deg),
       radial-gradient(ellipse at 72% 40%, rgba(91,124,255,.25), transparent 55%);
@@ -466,6 +467,75 @@
   .closing h2 { color: var(--gold); }
   @media (max-width: 760px) { .hero-art { max-width: 250px; } .hero::before { background: repeating-conic-gradient(from 0deg at 50% 22%, rgba(244,193,60,.10) 0deg 6deg, transparent 6deg 18deg); -webkit-mask-image: radial-gradient(ellipse at 50% 22%, #000, transparent 50%); mask-image: radial-gradient(ellipse at 50% 22%, #000, transparent 50%); } }
   @media (prefers-reduced-motion: reduce) { .hero-art img, .hero-art::before, .hero::before, .hero::after { animation: none; } .game:hover, .promo:hover, .review:hover { transform: none; } }
+  /* ===== Premium pass ===== */
+  :root { --bg:#060914; --surface:#0b1124; --surface-2:#10183a; --line:rgba(244,193,60,.10); --line-strong:rgba(244,193,60,.22);
+          --text:#f3efe4; --muted:#9aa1bd; --gold:#e9c46a; --gold-hi:#f7dc8f; --gold-lo:#b8862b; --radius:18px; --max:1180px; }
+  body { font-weight: 400; letter-spacing: .005em;
+    background: radial-gradient(1400px 800px at 85% -15%, rgba(70,90,200,.18), transparent 60%), radial-gradient(1000px 700px at -15% 30%, rgba(233,196,106,.06), transparent 60%), var(--bg); }
+  body::before { content:""; position:fixed; inset:0; pointer-events:none; z-index:100; opacity:.035; mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+  h1, h2, h3 { font-family: "Cormorant Garamond", Georgia, serif; font-weight: 600; letter-spacing: -.005em; }
+  .brand { font-family: Cinzel, serif; font-weight: 600; letter-spacing: .08em; font-size: 15px; text-transform: uppercase; }
+  .eyebrow { font: 500 11px/1 Inter, sans-serif; letter-spacing: .32em; color: var(--gold); display: inline-flex; align-items: center; gap: 12px; }
+  .eyebrow::before { content:""; width: 28px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold)); }
+  .hero .eyebrow::before { display:none; }
+  section { padding: 120px 0; border-top: 0; position: relative; }
+  section + section::before { content:""; position:absolute; top:0; left:50%; transform:translateX(-50%); width:min(var(--max), 90%); height:1px;
+    background: linear-gradient(90deg, transparent, var(--line-strong), transparent); }
+  .sec-head h2 { font-size: clamp(36px, 5vw, 56px); line-height: 1.02; margin-bottom: 16px; }
+  .lead { font-size: 17px; line-height: 1.7; color: var(--muted); }
+  /* header */
+  header { background: rgba(6,9,20,.72); backdrop-filter: blur(18px) saturate(1.2); border-bottom: 1px solid var(--line); }
+  .nav { height: 72px; }
+  .nav-links { gap: 34px; }
+  .nav-links a { font-size: 13px; letter-spacing: .06em; text-transform: uppercase; font-weight: 500; transition: color .2s; }
+  .ticker { background: linear-gradient(90deg, rgba(233,196,106,.07), rgba(233,196,106,.02)); border-bottom: 1px solid var(--line); }
+  .ticker ul { font-size: 12px; letter-spacing: .04em; font-weight: 500; color: var(--muted); }
+  /* buttons */
+  .btn { border-radius: 999px; font: 600 14px/1 Inter, sans-serif; letter-spacing: .03em; min-height: 50px; padding: 0 26px; }
+  .btn-sm { min-height: 40px; padding: 0 18px; font-size: 13px; }
+  .btn-primary { color: #1c1405; background: linear-gradient(135deg, var(--gold-hi), var(--gold) 45%, var(--gold-lo)); border: 0;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.45), 0 10px 30px rgba(233,196,106,.22); }
+  .btn-primary:hover { background: linear-gradient(135deg, #fff0bf, var(--gold-hi) 45%, var(--gold)); transform: translateY(-1px); }
+  .btn-ghost { border-color: var(--line-strong); background: rgba(255,255,255,.02); }
+  .btn-ghost:hover { border-color: var(--gold); color: var(--gold-hi); }
+  /* hero */
+  .hero { padding: 96px 0 104px; }
+  .hero h1 { font-size: clamp(52px, 8vw, 96px); line-height: .95; font-weight: 600; margin-bottom: 26px;
+    background: linear-gradient(180deg, #fffaf0 0%, #f7e3a6 45%, #d7a948 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .hero h1 em { font-style: italic; font-weight: 500; }
+  .hero .lead { font-size: 18px; max-width: 30em; }
+  .hero-offer { border-color: var(--line-strong); background: rgba(233,196,106,.05); font-size: 13px; letter-spacing: .02em; }
+  .fb-card { border-radius: 14px; background: rgba(255,255,255,.02); border-color: var(--line); }
+  /* stats strip */
+  .strip { padding: 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: rgba(255,255,255,.012); }
+  .strip ul.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; padding: 0 20px; }
+  .strip li::before { display: none; }
+  .stats li { display: flex; align-items: center; gap: 14px; padding: 26px 20px; border-left: 1px solid var(--line); color: var(--text); }
+  .stats li:first-child { border-left: 0; }
+  .stats svg { width: 26px; height: 26px; flex: none; fill: none; stroke: var(--gold); stroke-width: 1.4; stroke-linejoin: round; stroke-linecap: round; }
+  .stats strong { display: block; font: 600 20px/1.1 "Cormorant Garamond", serif; color: var(--gold-hi); }
+  .stats span { display: block; font-size: 12.5px; color: var(--muted); margin-top: 3px; }
+  /* cards */
+  .steps li, .game, .promo, .policy, .review, details, .rev-form {
+    background: linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.01)), var(--surface);
+    border: 1px solid var(--line); border-radius: var(--radius); }
+  .promo.wide { background: radial-gradient(120% 140% at 0% 0%, rgba(233,196,106,.13), transparent 55%), linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.01)), var(--surface); border-color: var(--line-strong); }
+  .promo h3, .policy h3, .steps h3, .game h3 { font-size: 26px; }
+  .promo .big, .promo-math strong { font-family: "Cormorant Garamond", serif; }
+  .promo-tag { border-color: var(--line-strong); letter-spacing: .24em; font-size: 10px; }
+  .steps li::before { border-color: var(--line-strong); font-family: "Cormorant Garamond", serif; font-size: 20px; }
+  .game-logo { background: radial-gradient(circle at 50% 20%, rgba(70,90,200,.25), transparent 70%), #0a1030; border: 1px solid var(--line); }
+  .pay li { border-color: var(--line-strong); background: transparent; font-weight: 500; letter-spacing: .02em; }
+  summary { font-family: "Cormorant Garamond", serif; font-size: 21px; font-weight: 600; padding: 22px 24px; }
+  details p { padding: 0 24px 22px; }
+  footer { background: #04060e; border-top: 1px solid var(--line); }
+  footer h4 { font: 500 11px/1 Inter, sans-serif; letter-spacing: .28em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; }
+  .closing h2 { font-size: clamp(40px, 6vw, 72px); }
+  dialog#topup, dialog#signin { background: linear-gradient(180deg, rgba(255,255,255,.04), transparent), #0a1026; border-color: var(--line-strong); border-radius: 22px; }
+  dialog#topup h2, dialog#signin h2 { font-size: 32px; }
+  @media (max-width: 960px) { .strip ul.stats { grid-template-columns: 1fr 1fr; } .stats li:nth-child(3) { border-left: 0; } .stats li:nth-child(n+3) { border-top: 1px solid var(--line); } }
+  @media (max-width: 760px) { section { padding: 80px 0; } .hero { padding: 48px 0 72px; } .stats li { padding: 18px 12px; gap: 10px; } .stats strong { font-size: 17px; } .nav { height: 64px; } }
 </style>
 </head>
 <body id="top">
@@ -491,9 +561,9 @@
     </div>
   </div>
   <nav class="chips" aria-label="Sections">
-    <a href="#promotions">🎁 Promotions</a>
+    <a href="#promotions">Promotions</a>
     <a href="#games">Games</a>
-    <a href="#reviews">⭐ Reviews</a>
+    <a href="#reviews">Reviews</a>
     <a href="#how-it-works">How it works</a>
     <a href="#policies">Policies</a>
     <a href="#faq">FAQ</a>
@@ -503,18 +573,18 @@
 <div class="ticker" aria-label="Current promotions">
   <div class="ticker-track">
     <ul>
-      <li><span>🎁 100% bonus</span> on your first deposit</li>
-      <li><span>🎮 $3 Free Play</span> for new players</li>
-      <li><span>🤝 Refer a friend</span> — get $20</li>
-      <li><span>🔥 7-day streak</span> — up to $5 a day</li>
-      <li><span>⚡ Fast cashouts</span> — up to $500 within 24 hours</li>
+      <li><span>100% bonus</span> on your first deposit</li>
+      <li><span>$3 Free Play</span> for new players</li>
+      <li><span>Refer a friend</span>: get $20</li>
+      <li><span>7-day streak</span>: up to $5 a day</li>
+      <li><span>Fast cashouts</span>: up to $500 within 24 hours</li>
     </ul>
     <ul aria-hidden="true">
-      <li><span>🎁 100% bonus</span> on your first deposit</li>
-      <li><span>🎮 $3 Free Play</span> for new players</li>
-      <li><span>🤝 Refer a friend</span> — get $20</li>
-      <li><span>🔥 7-day streak</span> — up to $5 a day</li>
-      <li><span>⚡ Fast cashouts</span> — up to $500 within 24 hours</li>
+      <li><span>100% bonus</span> on your first deposit</li>
+      <li><span>$3 Free Play</span> for new players</li>
+      <li><span>Refer a friend</span>: get $20</li>
+      <li><span>7-day streak</span>: up to $5 a day</li>
+      <li><span>Fast cashouts</span>: up to $500 within 24 hours</li>
     </ul>
   </div>
 </div>
@@ -543,7 +613,7 @@
     </a>
   </div>
   <p class="inapp-pay" data-inapp-pay hidden>You're inside the Facebook/Instagram app, where <b>Apple Pay won't show</b>. Tap <b>•••</b> → <b>Open in browser</b> (Safari or Chrome), then tap Top up again.</p>
-  <p class="topup-secure">🔒 Secure checkout by Stripe and PayPal. We never see your card details.</p>
+  <p class="topup-secure">Secure checkout by Stripe and PayPal. We never see your card details.</p>
   <a class="btn btn-ghost topup-msg" data-message href="#">Paid? Message us to load it</a>
   <p class="topup-note">18+ only. Entertainment only. Play within your limits.</p>
 </dialog>
@@ -607,11 +677,12 @@
   </section>
 
   <!-- Trust strip -->
-  <div class="strip" style="border-top:1px solid var(--line)">
-    <ul class="wrap">
-      <li>Fast cashouts</li>
-      <li>Secure payments</li>
-      <li>Real people on support</li>
+  <div class="strip">
+    <ul class="wrap stats">
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg><div><strong>$500 in 24h</strong><span>Fast, no-minimum cashouts</span></div></li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg><div><strong>Secure checkout</strong><span>Stripe &amp; PayPal</span></div></li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H8l-4 4z"/></svg><div><strong>Real people</strong><span>Support that answers</span></div></li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18 4.5 8l4.5 4 3-7 3 7 4.5-4L21 18z"/><path d="M3 21h18"/></svg><div><strong>100% match</strong><span>On your first deposit</span></div></li>
     </ul>
   </div>
 
