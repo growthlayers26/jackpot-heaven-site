@@ -81,7 +81,7 @@
   }
   .nav { display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 16px; }
   .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-family: Poppins, sans-serif; font-weight: 600; }
-  .brand img { width: 36px; height: 36px; border-radius: 50%; }
+  .brand img { width: 44px; height: 44px; border-radius: 50%; }
   .nav-links { display: flex; gap: 28px; font-size: 14px; }
   .nav-links a { text-decoration: none; color: var(--muted); }
   .nav-links a:hover { color: var(--text); }
@@ -138,17 +138,17 @@
   }
 
   /* Games */
-  .games { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 28px; }
+  .games { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; margin-bottom: 28px; }
   .game {
     display: flex; flex-direction: column; background: var(--surface); border: 1px solid var(--line);
     border-radius: var(--radius); padding: 20px;
   }
   .game-logo {
-    height: 96px; border-radius: 10px; background: var(--surface-2); margin-bottom: 18px;
+    height: 120px; border-radius: 10px; background: var(--surface-2); margin-bottom: 18px;
     display: grid; place-items: center; padding: 14px;
   }
   .game-logo { overflow: hidden; }
-  .game-logo img { width: auto; height: auto; max-height: 68px; max-width: 100%; object-fit: contain; }
+  .game-logo img { width: auto; height: auto; max-height: 100px; border-radius: 16px; max-width: 100%; object-fit: contain; }
   .game h3 { font-size: 17px; margin-bottom: 6px; }
   .game p { color: var(--muted); font-size: 14px; margin: 0 0 18px; }
   .game .btn { margin-top: auto; align-self: flex-start; }
@@ -165,6 +165,7 @@
     content: ""; position: absolute; left: 2px; top: 7px; width: 12px; height: 7px;
     border-left: 2px solid var(--gold); border-bottom: 2px solid var(--gold); transform: rotate(-45deg);
   }
+  .policy-card { margin: 24px auto 0; max-width: 420px; border-radius: 18px; overflow: hidden; border: 1px solid rgba(244,193,60,.35); box-shadow: 0 20px 50px rgba(0,0,0,.45); }
   .policy-foot { margin-top: 22px; color: var(--muted); font-size: 14px; }
 
   /* FAQ */
@@ -432,7 +433,7 @@
   h1, h2, .brand { font-family: Cinzel, Poppins, serif; letter-spacing: .01em; }
   .hero h1 { background: linear-gradient(180deg, #fff6d8, #f4c13c 55%, #c98a14); -webkit-background-clip: text; background-clip: text; color: transparent; }
   .hero h1 em { color: inherit; }
-  .hero-art { aspect-ratio: 1 / 1; max-width: 480px; justify-self: center; border: 1px solid rgba(244,193,60,.35);
+  .hero-art { aspect-ratio: 16 / 9; border: 1px solid rgba(244,193,60,.35);
     box-shadow: 0 0 0 6px rgba(244,193,60,.06), 0 30px 80px rgba(0,0,0,.55), 0 0 120px rgba(244,193,60,.18); border-radius: 28px; }
   .hero-art img { animation: jh-float 6s ease-in-out infinite; }
   @keyframes jh-float { 50% { transform: translateY(-6px) scale(1.01); } }
@@ -444,7 +445,7 @@
   .strip ul li { font-weight: 600; color: var(--text); }
   .closing { background: radial-gradient(600px 260px at 50% 0%, rgba(244,193,60,.14), transparent 70%); }
   .closing h2 { color: var(--gold); }
-  @media (max-width: 760px) { .hero-art { max-width: 220px; border-radius: 22px; } }
+  @media (max-width: 760px) { .hero-art { border-radius: 18px; } }
   @media (prefers-reduced-motion: reduce) { .hero-art img { animation: none; } .game:hover, .promo:hover, .review:hover { transform: none; } }
 </style>
 </head>
@@ -596,7 +597,7 @@
         <p class="note">Entertainment only. Play for fun and set your own limits.</p>
       </div>
       <div class="hero-art">
-        <img src="assets/cover.jpg" alt="Gold Jackpot Heaven crown over a pile of gold coins" width="1200" height="1200">
+        <img src="assets/cover.jpg" alt="Jackpot Heaven games: Fire Kirin, Juwa, Panda Master, VBlink and Ultra Panda" width="1600" height="893">
       </div>
     </div>
   </section>
@@ -712,33 +713,39 @@
     <div class="wrap">
       <div class="sec-head">
         <p class="eyebrow">Games</p>
-        <h2>Pick your floor</h2>
+        <h2>Pick your game</h2>
         <p class="lead">Download whichever game you want to play, then message us and we'll have your account loaded in minutes.</p>
       </div>
       <div class="games">
         <article class="game">
-          <div class="game-logo"><img src="assets/games/gamevault-logo.png" alt="Game Vault" loading="lazy"></div>
-          <h3>Game Vault</h3>
-          <p>The original vault floor — fish games and slots.</p>
-          <a class="btn btn-ghost btn-sm" href="https://download.gamevault999.com" target="_blank" rel="noopener noreferrer">Download</a>
+          <div class="game-logo"><img src="assets/games/firekirin.png" alt="Fire Kirin" loading="lazy"></div>
+          <h3>Fire Kirin</h3>
+          <p>High-energy fish games for players who want the big swings.</p>
+          <a class="btn btn-ghost btn-sm" href="https://start.firekirin.xyz:8580/" target="_blank" rel="noopener noreferrer">Download</a>
         </article>
         <article class="game">
-          <div class="game-logo"><img src="assets/games/juwa-logo.png" alt="Juwa" loading="lazy"></div>
+          <div class="game-logo"><img src="assets/games/juwa.png" alt="Juwa" loading="lazy"></div>
           <h3>Juwa</h3>
           <p>A player favorite — deep game library, smooth play.</p>
           <a class="btn btn-ghost btn-sm" href="https://dl.juwa777.com/" target="_blank" rel="noopener noreferrer">Download</a>
         </article>
         <article class="game">
-          <div class="game-logo"><img src="assets/games/milkyway-logo.png" alt="Milkyway" loading="lazy"></div>
-          <h3>Milkyway</h3>
-          <p>Big, bright, and easy to pick up for a first-timer.</p>
-          <a class="btn btn-ghost btn-sm" href="https://milkywayapp.xyz/" target="_blank" rel="noopener noreferrer">Download</a>
+          <div class="game-logo"><img src="assets/games/pandamaster.png" alt="Panda Master" loading="lazy"></div>
+          <h3>Panda Master</h3>
+          <p>Classic slots and fish tables with a friendly panda vibe.</p>
+          <a class="btn btn-ghost btn-sm" data-message href="#">Get the download link</a>
         </article>
         <article class="game">
-          <div class="game-logo"><img src="assets/games/firekirin-logo.png" alt="Fire Kirin" loading="lazy"></div>
-          <h3>Fire Kirin</h3>
-          <p>High-energy floor for players who want the big swings.</p>
-          <a class="btn btn-ghost btn-sm" href="https://start.firekirin.xyz:8580/" target="_blank" rel="noopener noreferrer">Download</a>
+          <div class="game-logo"><img src="assets/games/vblink.png" alt="VBlink" loading="lazy"></div>
+          <h3>VBlink</h3>
+          <p>Bright, fast slots — easy to pick up for first-timers.</p>
+          <a class="btn btn-ghost btn-sm" data-message href="#">Get the download link</a>
+        </article>
+        <article class="game">
+          <div class="game-logo"><img src="assets/games/ultrapanda.png" alt="Ultra Panda" loading="lazy"></div>
+          <h3>Ultra Panda</h3>
+          <p>Big-bonus slots and fish games, packed with features.</p>
+          <a class="btn btn-ghost btn-sm" data-message href="#">Get the download link</a>
         </article>
       </div>
       <p class="fine">Accounts are set up by our team, not self-serve — message us after you download and we'll get you playing.</p>
@@ -824,6 +831,7 @@
           </ul>
         </div>
       </div>
+      <figure class="policy-card"><img src="assets/cashout-policy.jpg" alt="Jackpot Heaven cashout policy: no minimum cashout, balance must be above your deposit, up to $500 within 24 hours, the rest after 24 hours, fast processing" loading="lazy" width="900" height="1205"></figure>
       <p class="policy-foot">These are the same terms posted on our Facebook page. No surprises at cashout.</p>
     </div>
   </section>
