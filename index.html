@@ -1156,14 +1156,15 @@
       applyIdentity();
       window.$chatwoot.toggle("open");
     } else {
-      // Chat still loading: open it as soon as it is ready. If it never loads (blocked by an
-      // ad blocker or a slow connection), tell the player how to get it working.
+      // Chat still loading (it can take a while on a phone connection): say so, and open it the
+      // moment it is ready. Only if it still hasn't loaded after a long wait, suggest a fix,
+      // and keep the request alive so the chat still opens if it arrives later.
       window.openChatWhenReady = true;
+      toast("Opening the chat…");
       setTimeout(function () {
         if (window.chatReady || !window.openChatWhenReady) return;
-        window.openChatWhenReady = false;
-        toast("Our chat couldn't load. Turn off any ad blocker or try Chrome or Safari, then tap Message us again.");
-      }, 6000);
+        toast("The chat is taking a while. Check your connection, or turn off any ad blocker.");
+      }, 25000);
     }
   }
 
