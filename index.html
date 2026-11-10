@@ -1,0 +1,1494 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jackpot Heaven — Heavenly Jackpots, Royal Payouts</title>
+<meta name="description" content="Jackpot Heaven is an online gaming lounge. Message us to join, load your balance, and cash out fast. 18+, play responsibly.">
+<meta property="og:title" content="Jackpot Heaven">
+<meta property="og:description" content="Heavenly jackpots, royal payouts. One message and you're in. 18+.">
+<meta property="og:image" content="https://jackpotheaven.club/assets/cover.jpg">
+<meta property="og:url" content="https://jackpotheaven.club/">
+<link rel="canonical" href="https://jackpotheaven.club/">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#070b1f">
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Jackpot Heaven">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&family=Cinzel:wght@700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #070b1f;
+    --surface: #0d1433;
+    --surface-2: #131c45;
+    --line: rgba(255, 255, 255, 0.08);
+    --line-strong: rgba(255, 255, 255, 0.16);
+    --text: #f2f0ea;
+    --muted: #a3abc9;
+    --gold: #f4c13c;
+    --gold-ink: #1a1305;
+    --teal: #5b7cff;
+    --radius: 14px;
+    --max: 1120px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 400 16px/1.6 Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+  h1, h2, h3 { font-family: Poppins, Inter, sans-serif; line-height: 1.15; margin: 0; letter-spacing: -0.01em; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 20px; }
+  .eyebrow {
+    font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--gold); margin: 0 0 14px;
+  }
+  .lead { color: var(--muted); font-size: 18px; max-width: 34em; }
+  section { padding: 88px 0; border-top: 1px solid var(--line); }
+  .sec-head { margin-bottom: 40px; }
+  .sec-head h2 { font-size: clamp(28px, 4vw, 38px); margin-bottom: 12px; }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    min-height: 48px; padding: 0 22px; border-radius: 999px;
+    font: 600 15px/1 Inter, sans-serif; text-decoration: none; cursor: pointer;
+    border: 1px solid transparent; transition: background .15s, border-color .15s, transform .15s;
+  }
+  .btn:active { transform: translateY(1px); }
+  .btn-primary { background: var(--gold); color: var(--gold-ink); }
+  .btn-primary:hover { background: #ffd45e; }
+  .btn-ghost { border-color: var(--line-strong); color: var(--text); background: transparent; }
+  .btn-ghost:hover { border-color: rgba(255,255,255,.35); }
+  .btn-sm { min-height: 40px; padding: 0 18px; font-size: 14px; }
+  :focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; }
+
+  /* Header */
+  header {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(7, 11, 31, 0.85); backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav { display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 16px; }
+  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-family: Poppins, sans-serif; font-weight: 600; }
+  .brand img { width: 36px; height: 36px; border-radius: 50%; }
+  .nav-links { display: flex; gap: 28px; font-size: 14px; }
+  .nav-links a { text-decoration: none; color: var(--muted); }
+  .nav-links a:hover { color: var(--text); }
+  .nav-links a.is-active { color: var(--gold); }
+
+  /* Phone/tablet section row (the header links are hidden at these widths) */
+  .chips { display: none; }
+
+  /* Hero */
+  .hero { padding: 72px 0 88px; border-top: 0; }
+  .hero-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 56px; align-items: center; }
+  .hero h1 { font-size: clamp(38px, 6vw, 62px); margin-bottom: 20px; }
+  .hero h1 em { font-style: normal; color: var(--gold); }
+  .hero .lead { margin: 0 0 32px; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 28px; }
+  .fb-card {
+    display: flex; align-items: center; gap: 14px; max-width: 380px;
+    padding: 14px 16px; border: 1px solid var(--line); border-radius: var(--radius);
+    background: var(--surface); text-decoration: none;
+  }
+  .fb-card:hover { border-color: var(--line-strong); }
+  .fb-dot {
+    flex: none; width: 36px; height: 36px; border-radius: 9px; background: #1877f2; color: #fff;
+    display: grid; place-items: center; font: 700 20px/1 Poppins, sans-serif;
+  }
+  .fb-card small { display: block; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+  .fb-card strong { font-weight: 600; font-size: 15px; }
+  .fb-card .arrow { margin-left: auto; color: var(--gold); }
+  .note { font-size: 13px; color: var(--muted); margin: 18px 0 0; }
+  .hero-art { border-radius: 20px; overflow: hidden; border: 1px solid var(--line); aspect-ratio: 16 / 10; }
+  .hero-art img { width: 100%; height: 100%; object-fit: cover; }
+
+  /* Trust strip */
+  .strip { padding: 22px 0; }
+  .strip ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 40px; color: var(--muted); font-size: 14px; }
+  .strip li::before { content: ""; display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--teal); margin-right: 10px; vertical-align: middle; }
+
+  /* Steps */
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 36px; counter-reset: s; padding: 0; list-style: none; }
+  .steps li { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px; }
+  .steps li::before {
+    counter-increment: s; content: counter(s);
+    display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%;
+    border: 1px solid var(--gold); color: var(--gold); font: 600 15px/1 Poppins, sans-serif; margin-bottom: 18px;
+  }
+  .steps h3 { font-size: 18px; margin-bottom: 6px; }
+  .steps p { margin: 0; color: var(--muted); font-size: 15px; }
+
+  /* Payments */
+  .pay { display: flex; flex-wrap: wrap; gap: 10px; margin: 0; padding: 0; list-style: none; }
+  .pay li {
+    padding: 10px 18px; border-radius: 999px; border: 1px solid var(--line-strong);
+    font-weight: 600; font-size: 14px; background: var(--surface);
+  }
+
+  /* Games */
+  .games { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 28px; }
+  .game {
+    display: flex; flex-direction: column; background: var(--surface); border: 1px solid var(--line);
+    border-radius: var(--radius); padding: 20px;
+  }
+  .game-logo {
+    height: 96px; border-radius: 10px; background: var(--surface-2); margin-bottom: 18px;
+    display: grid; place-items: center; padding: 14px;
+  }
+  .game-logo { overflow: hidden; }
+  .game-logo img { width: auto; height: auto; max-height: 68px; max-width: 100%; object-fit: contain; }
+  .game h3 { font-size: 17px; margin-bottom: 6px; }
+  .game p { color: var(--muted); font-size: 14px; margin: 0 0 18px; }
+  .game .btn { margin-top: auto; align-self: flex-start; }
+  .fine { color: var(--muted); font-size: 14px; margin: 0 0 22px; }
+
+  /* Policies */
+  .policies { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 16px; }
+  .policy { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px; }
+  .policy.feature { border-color: rgba(244, 193, 60, 0.35); }
+  .policy h3 { font-size: 18px; margin-bottom: 16px; }
+  .policy ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 12px; }
+  .policy li { position: relative; padding-left: 26px; color: #d6d9ea; font-size: 15px; }
+  .policy li::before {
+    content: ""; position: absolute; left: 2px; top: 7px; width: 12px; height: 7px;
+    border-left: 2px solid var(--gold); border-bottom: 2px solid var(--gold); transform: rotate(-45deg);
+  }
+  .policy-foot { margin-top: 22px; color: var(--muted); font-size: 14px; }
+
+  /* FAQ */
+  .faq { max-width: 760px; margin: 0 auto; }
+  .faq .sec-head { text-align: center; }
+  details { border: 1px solid var(--line); border-radius: 12px; background: var(--surface); margin-bottom: 10px; }
+  summary {
+    list-style: none; cursor: pointer; padding: 18px 20px; font-weight: 600;
+    display: flex; justify-content: space-between; align-items: center; gap: 16px;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "+"; color: var(--gold); font-size: 22px; line-height: 1; transition: transform .2s; }
+  details[open] summary::after { transform: rotate(45deg); }
+  details p { margin: 0; padding: 0 20px 18px; color: var(--muted); }
+
+  /* Closing CTA */
+  .closing { text-align: center; }
+  .closing h2 { font-size: clamp(30px, 5vw, 44px); margin-bottom: 12px; }
+  .closing .lead { margin: 0 auto 28px; }
+
+  /* Footer */
+  footer { border-top: 1px solid var(--line); padding: 56px 0 40px; background: #050817; font-size: 14px; }
+  .foot-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1.2fr; gap: 32px; margin-bottom: 40px; }
+  footer h4 { font: 600 14px/1.3 Poppins, sans-serif; margin: 0 0 12px; }
+  footer p, footer li { color: var(--muted); }
+  footer ul { list-style: none; margin: 0; padding: 0; }
+  footer li a { display: inline-block; padding: 5px 0; text-decoration: none; }
+  footer li a:hover { color: var(--text); }
+  .foot-bottom { border-top: 1px solid var(--line); padding-top: 24px; text-align: center; color: var(--muted); font-size: 13px; }
+  .foot-bottom p { margin: 4px 0; }
+
+  .nav-actions { display: flex; gap: 8px; align-items: center; }
+  [hidden] { display: none !important; }
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+  .nav-actions .btn, .brand { white-space: nowrap; }
+
+  /* Top up panel */
+  dialog#topup, dialog#signin {
+    width: min(440px, calc(100vw - 32px)); max-height: calc(100vh - 32px); overflow: auto;
+    padding: 24px; border: 1px solid var(--line-strong); border-radius: 18px;
+    background: var(--surface); color: var(--text);
+  }
+  dialog#topup::backdrop, dialog#signin::backdrop { background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(2px); }
+  dialog#topup h2, dialog#signin h2 { font-size: 24px; margin-bottom: 8px; }
+  .topup-close-row { display: flex; justify-content: flex-end; margin: -8px -8px 0 0; }
+  .topup-x {
+    width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--line); background: transparent;
+    color: var(--muted); font-size: 22px; line-height: 1; cursor: pointer;
+  }
+  .topup-x:hover { color: var(--text); border-color: var(--line-strong); }
+  .topup-lead { color: var(--muted); margin: 0 0 20px; font-size: 15px; }
+  .topup-options { display: grid; gap: 10px; margin-bottom: 16px; }
+  .pay-opt {
+    display: grid; grid-template-columns: 40px 1fr auto; gap: 1px 12px; align-items: center;
+    padding: 12px 14px; border-radius: 12px; border: 1px solid var(--line-strong);
+    background: var(--surface-2); text-decoration: none; transition: border-color .15s, background .15s;
+  }
+  .pay-opt:hover { border-color: var(--gold); }
+  .pay-mark { grid-row: 1 / span 2; width: 40px; height: 40px; border-radius: 10px; display: grid; place-items: center; font: 800 18px/1 Inter, sans-serif; }
+  .pay-mark svg { width: 22px; height: 22px; }
+  .mark-cashapp { background: #00d632; color: #fff; }
+  .mark-apple { background: #fff; color: #000; }
+  .mark-google { background: #fff; color: #4285f4; font-family: Arial, sans-serif; }
+  .mark-card { background: #1f2a5c; color: var(--text); }
+  .mark-paypal { background: #ffc439; color: #003087; font-style: italic; font-family: Arial, sans-serif; }
+  .pay-name { font: 600 16px/1.3 Poppins, sans-serif; }
+  .pay-sub { grid-column: 2; color: var(--muted); font-size: 13px; line-height: 1.35; }
+  .pay-arrow { grid-column: 3; grid-row: 1 / span 2; color: var(--gold); font-size: 18px; }
+  .pay-featured { border-color: rgba(0, 214, 50, 0.55); background: rgba(0, 214, 50, 0.06); }
+  .pay-featured:hover { border-color: #00d632; }
+  .pay-featured .pay-arrow { color: #00d632; }
+  .topup-secure { margin: -4px 0 14px; color: var(--muted); font-size: 12px; text-align: center; }
+  .pay-opt.is-off { opacity: .45; pointer-events: none; }
+  .pay-opt.is-off .pay-arrow::after { content: "Soon"; font-size: 12px; color: var(--muted); }
+  .pay-opt.is-off .pay-arrow { font-size: 0; }
+  .topup-msg { width: 100%; }
+  .topup-note { margin: 14px 0 0; text-align: center; color: var(--muted); font-size: 12px; }
+
+  /* Sign-in panel */
+  .who { display: none; align-items: center; gap: 8px; max-width: 160px; }
+  .who img { width: 22px; height: 22px; border-radius: 50%; flex: none; }
+  .who span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .is-signed-in .who { display: inline-flex; }
+  .is-signed-in .signin-label { display: none; }
+  .gsi-box { display: flex; justify-content: center; min-height: 44px; margin: 4px 0 18px; }
+  .signin-state[hidden], .signin-out[hidden], .inapp[hidden] { display: none; }
+  .inapp { border: 1px solid var(--line-strong); border-radius: 12px; background: var(--surface-2); padding: 16px; margin-bottom: 16px; font-size: 14px; }
+  .inapp p { margin: 0 0 10px; }
+  .inapp .btn { width: 100%; }
+  .signin-msg { min-height: 20px; margin: 0; text-align: center; font-size: 14px; color: var(--muted); }
+  .signin-msg.is-error { color: #ff8a80; }
+  .link-btn { background: none; border: 0; padding: 0; color: var(--muted); font: inherit; text-decoration: underline; cursor: pointer; }
+  .link-btn:hover { color: var(--text); }
+  .account-row { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border: 1px solid var(--line-strong); border-radius: 12px; background: var(--surface-2); margin-bottom: 16px; }
+  .account-row img { width: 40px; height: 40px; border-radius: 50%; }
+  .account-row strong { display: block; }
+  .account-row small { color: var(--muted); word-break: break-all; }
+  .signin-actions { display: grid; gap: 10px; }
+
+  /* Promo ticker */
+  .ticker { overflow: hidden; border-bottom: 1px solid var(--line); background: linear-gradient(90deg, rgba(244,193,60,.10), rgba(244,193,60,.04)); }
+  .ticker-track { display: flex; width: max-content; animation: ticker 38s linear infinite; }
+  .ticker:hover .ticker-track { animation-play-state: paused; }
+  .ticker ul { display: flex; gap: 40px; margin: 0; padding: 9px 20px; list-style: none; font-size: 13px; font-weight: 600; white-space: nowrap; }
+  .ticker li span { color: var(--gold); }
+  @keyframes ticker { to { transform: translateX(-50%); } }
+
+  /* Hero offer pill */
+  .hero-offer {
+    display: inline-flex; align-items: center; gap: 10px; margin: 0 0 22px; padding: 7px 14px 7px 8px;
+    border: 1px solid rgba(244,193,60,.45); border-radius: 999px; background: rgba(244,193,60,.08);
+    color: var(--text); font-size: 14px; text-decoration: none;
+  }
+  .hero-offer b { background: var(--gold); color: var(--gold-ink); border-radius: 999px; padding: 3px 10px; font-size: 12px; letter-spacing: .04em; }
+  .hero-offer:hover { border-color: var(--gold); }
+
+  /* Promotions */
+  .promos { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
+  .promo { grid-column: span 3; display: flex; flex-direction: column; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px; }
+  .promo.wide { grid-column: span 6; display: grid; grid-template-columns: 1.2fr 1fr; gap: 28px; align-items: center;
+    border-color: rgba(244,193,60,.45); background: radial-gradient(120% 140% at 0% 0%, rgba(244,193,60,.16), transparent 55%), var(--surface); }
+  .promo-tag { align-self: flex-start; font: 600 11px/1 Inter, sans-serif; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(244,193,60,.4); border-radius: 999px; padding: 6px 10px; margin-bottom: 14px; }
+  .promo h3 { font-size: 22px; margin-bottom: 8px; }
+  .promo .big { font: 700 clamp(40px, 6vw, 64px)/1 Poppins, sans-serif; color: var(--gold); margin: 0 0 6px; }
+  .promo p { color: var(--muted); margin: 0 0 18px; font-size: 15px; }
+  .promo .cta-row { margin: auto 0 0; }
+  .promo-math { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .promo-math div { flex: 1; min-width: 110px; text-align: center; padding: 18px 10px; border-radius: 12px; background: var(--surface-2); border: 1px solid var(--line-strong); }
+  .promo-math small { display: block; color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .1em; margin-bottom: 4px; }
+  .promo-math strong { font: 700 28px/1 Poppins, sans-serif; }
+  .promo-math .eq { flex: none; min-width: 0; padding: 0; background: none; border: 0; color: var(--gold); font-size: 22px; }
+  .streak { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; margin: 4px 0 18px; padding: 0; }
+  .streak li { list-style: none; text-align: center; padding: 10px 2px; border-radius: 10px; background: var(--surface-2); border: 1px solid var(--line); }
+  .streak small { display: block; color: var(--muted); font-size: 11px; margin-bottom: 4px; }
+  .streak b { font: 600 14px/1 Poppins, sans-serif; }
+  .streak .top { border-color: var(--gold); background: rgba(244,193,60,.12); }
+  .streak .top b { color: var(--gold); }
+  .streak-note { font-size: 13px !important; }
+  .ref-box { border: 1px dashed var(--line-strong); border-radius: 12px; padding: 14px; margin: 0 0 16px; }
+  .ref-code { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 12px; }
+  .ref-code code { font: 700 20px/1 Poppins, sans-serif; letter-spacing: .06em; color: var(--gold); }
+  .share-row { display: flex; flex-wrap: wrap; gap: 8px; }
+  .share-row .btn { flex: 1 1 auto; }
+  .code-form { display: flex; gap: 8px; margin-top: 12px; }
+  .code-form input { flex: 1; min-width: 0; min-height: 40px; padding: 0 12px; border-radius: 10px; border: 1px solid var(--line-strong); background: var(--surface-2); color: var(--text); font: 500 14px Inter, sans-serif; text-transform: uppercase; }
+  .code-form input:focus { outline: 2px solid var(--gold); outline-offset: 1px; }
+  .ref-status { min-height: 18px; margin: 8px 0 0 !important; font-size: 13px !important; }
+  .promo-foot { margin-top: 18px; color: var(--muted); font-size: 13px; }
+  .promo-foot a { color: var(--gold); }
+  .claim-toast {
+    position: fixed; left: 50%; bottom: 24px; z-index: 60; transform: translateX(-50%); max-width: calc(100vw - 32px);
+    padding: 12px 16px; border-radius: 12px; background: var(--surface-2); border: 1px solid var(--gold); color: var(--text); font-size: 14px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.4);
+  }
+
+  /* Reviews */
+  .rev-summary { display: flex; align-items: center; gap: 14px; margin-top: 8px; }
+  .rev-summary strong { font: 700 44px/1 Poppins, sans-serif; }
+  .rev-summary small { display: block; color: var(--muted); font-size: 14px; }
+  .stars-row { color: var(--gold); letter-spacing: 2px; font-size: 18px; }
+  .reviews { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 16px; }
+  .review { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; display: flex; flex-direction: column; gap: 10px; }
+  .review-head { display: flex; align-items: center; gap: 10px; }
+  .review-head img, .review-head .avatar { width: 38px; height: 38px; border-radius: 50%; flex: none; object-fit: cover; }
+  .review-head .avatar { display: grid; place-items: center; background: var(--surface-2); border: 1px solid var(--line-strong); font: 600 15px Poppins, sans-serif; color: var(--gold); }
+  .review-head strong { display: block; font-size: 15px; }
+  .verified { color: var(--teal); font-size: 12px; font-weight: 600; }
+  .review p { margin: 0; color: #d6d9ea; font-size: 15px; }
+  .review time { color: var(--muted); font-size: 12px; margin-top: auto; }
+  .rev-empty { color: var(--muted); grid-column: 1 / -1; padding: 22px; border: 1px dashed var(--line-strong); border-radius: var(--radius); text-align: center; margin: 0; }
+  .rev-more { margin-bottom: 28px; }
+  .rev-form { max-width: 640px; background: var(--surface); border: 1px solid var(--line-strong); border-radius: var(--radius); padding: 24px; }
+  .rev-form h3 { font-size: 20px; margin-bottom: 6px; }
+  .rev-form > p { color: var(--muted); margin: 0 0 16px; font-size: 15px; }
+  .star-pick { display: inline-flex; flex-direction: row-reverse; gap: 4px; border: 0; padding: 0; margin: 0 0 14px; }
+  .star-pick input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+  .star-pick label { font-size: 32px; line-height: 1; color: var(--line-strong); cursor: pointer; transition: color .1s; }
+  .star-pick input:checked ~ label, .star-pick label:hover, .star-pick label:hover ~ label { color: var(--gold); }
+  .star-pick input:focus-visible + label { outline: 2px solid var(--gold); outline-offset: 2px; border-radius: 4px; }
+  .rev-form textarea { width: 100%; min-height: 110px; padding: 12px; border-radius: 10px; border: 1px solid var(--line-strong); background: var(--surface-2); color: var(--text); font: 15px/1.5 Inter, sans-serif; resize: vertical; margin-bottom: 6px; }
+  .rev-form textarea:focus { outline: 2px solid var(--gold); outline-offset: 1px; }
+  .rev-count { color: var(--muted); font-size: 12px; text-align: right; margin: 0 0 12px; }
+  .rev-status { min-height: 20px; margin: 10px 0 0; font-size: 14px; color: var(--muted); }
+  .rev-status.is-error { color: #ff8a80; }
+
+  /* Install-the-app popup (phones only) */
+  .install {
+    position: fixed; left: 12px; right: 12px; bottom: calc(84px + env(safe-area-inset-bottom)); z-index: 40;
+    background: var(--surface-2); border: 1px solid rgba(244,193,60,.5); border-radius: 16px;
+    padding: 14px; box-shadow: 0 18px 40px rgba(0,0,0,.55);
+    transform: translateY(16px); opacity: 0; transition: transform .25s ease, opacity .25s ease;
+  }
+  .install.is-in { transform: none; opacity: 1; }
+  .install-row { display: flex; align-items: center; gap: 12px; }
+  .install-row img { width: 48px; height: 48px; border-radius: 12px; flex: none; }
+  .install-row strong { display: block; font: 600 15px/1.3 Poppins, sans-serif; }
+  .install-row small { display: block; color: var(--muted); font-size: 13px; line-height: 1.4; }
+  .install-x { margin-left: auto; align-self: flex-start; width: 30px; height: 30px; flex: none; border-radius: 50%; border: 1px solid var(--line); background: transparent; color: var(--muted); font-size: 18px; line-height: 1; cursor: pointer; }
+  .install-actions { display: flex; gap: 8px; margin-top: 12px; }
+  .install-actions .btn { flex: 1; }
+  .install-steps { margin: 12px 0 0; padding: 12px 12px 12px 30px; border-radius: 12px; background: var(--surface); border: 1px solid var(--line); font-size: 14px; color: var(--text); }
+  .install-steps li { margin: 2px 0; }
+  .install-steps b { color: var(--gold); }
+  .share-ico { display: inline-block; vertical-align: -3px; width: 16px; height: 16px; }
+  @media (prefers-reduced-motion: reduce) { .install { transition: none; } }
+
+  /* Mobile sticky CTA */
+  .mobile-cta { display: none; }
+
+  @media (max-width: 960px) {
+    .games { grid-template-columns: repeat(2, 1fr); }
+    .policies { grid-template-columns: 1fr; }
+    .promo { grid-column: span 6; }
+    .reviews { grid-template-columns: 1fr 1fr; }
+    .promo.wide { grid-template-columns: 1fr; }
+    .foot-grid { grid-template-columns: 1fr 1fr; }
+    .nav-links { display: none; }
+    html { scroll-padding-top: 118px; }
+    .chips {
+      display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch;
+      padding: 0 20px 10px; margin: 0 auto; max-width: var(--max);
+    }
+    .chips::-webkit-scrollbar { display: none; }
+    .chips a {
+      flex: none; padding: 7px 14px; border-radius: 999px; border: 1px solid var(--line-strong);
+      color: var(--muted); font-size: 13px; font-weight: 600; text-decoration: none; white-space: nowrap;
+    }
+    .chips a.is-active { color: var(--gold-ink); background: var(--gold); border-color: var(--gold); }
+  }
+  @media (max-width: 760px) {
+    section { padding: 64px 0; }
+    .wrap { padding: 0 16px; }
+    .nav-links, .nav-msg { display: none; }
+    .brand { font-size: 15px; }
+    .hero { padding: 40px 0 64px; }
+    .hero-grid { grid-template-columns: 1fr; gap: 36px; }
+    .hero-art { order: -1; }
+    .steps { grid-template-columns: 1fr; }
+    .games { grid-template-columns: 1fr; }
+    .foot-grid { grid-template-columns: 1fr; }
+    .promo, .promo.wide { padding: 20px; }
+    .reviews { grid-template-columns: 1fr; }
+    .rev-form { padding: 20px; }
+    .streak { gap: 4px; }
+    .streak li { padding: 8px 0; }
+    .streak b { font-size: 12px; }
+    .claim-toast { bottom: 92px; }
+    body { padding-bottom: 76px; }
+    .mobile-cta {
+      display: block; position: fixed; left: 0; right: 0; bottom: 0; z-index: 20;
+      padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+      background: rgba(7, 11, 31, 0.92); backdrop-filter: blur(10px); border-top: 1px solid var(--line);
+    }
+    .mobile-cta .btn { width: 100%; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .ticker-track { animation: none; width: auto; }
+    .ticker ul + ul { display: none; }
+    .ticker ul { flex-wrap: wrap; white-space: normal; gap: 6px 24px; }
+  }
+
+  /* ===== Jackpot Heaven royal theme ===== */
+  body { background: radial-gradient(1200px 700px at 80% -10%, rgba(91,124,255,.16), transparent 60%), radial-gradient(900px 600px at -10% 20%, rgba(244,193,60,.08), transparent 60%), var(--bg); }
+  h1, h2, .brand { font-family: Cinzel, Poppins, serif; letter-spacing: .01em; }
+  .hero h1 { background: linear-gradient(180deg, #fff6d8, #f4c13c 55%, #c98a14); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .hero h1 em { color: inherit; }
+  .hero-art { aspect-ratio: 1 / 1; max-width: 480px; justify-self: center; border: 1px solid rgba(244,193,60,.35);
+    box-shadow: 0 0 0 6px rgba(244,193,60,.06), 0 30px 80px rgba(0,0,0,.55), 0 0 120px rgba(244,193,60,.18); border-radius: 28px; }
+  .hero-art img { animation: jh-float 6s ease-in-out infinite; }
+  @keyframes jh-float { 50% { transform: translateY(-6px) scale(1.01); } }
+  .btn-primary { background: linear-gradient(180deg, #ffd45e, #f4c13c 60%, #d99a1c); box-shadow: 0 6px 20px rgba(244,193,60,.25); }
+  .btn-primary:hover { background: linear-gradient(180deg, #ffe08a, #ffd45e 60%, #e8a923); }
+  .game, .promo, .policy, .review, .steps li { transition: transform .2s, border-color .2s, box-shadow .2s; }
+  .game:hover, .promo:hover, .review:hover { transform: translateY(-3px); border-color: rgba(244,193,60,.45); box-shadow: 0 16px 40px rgba(0,0,0,.35); }
+  .game-logo { background: radial-gradient(circle at 50% 30%, #1d2a66, var(--surface-2)); }
+  .strip ul li { font-weight: 600; color: var(--text); }
+  .closing { background: radial-gradient(600px 260px at 50% 0%, rgba(244,193,60,.14), transparent 70%); }
+  .closing h2 { color: var(--gold); }
+  @media (prefers-reduced-motion: reduce) { .hero-art img { animation: none; } .game:hover, .promo:hover, .review:hover { transform: none; } }
+</style>
+</head>
+<body id="top">
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top"><img src="assets/logo.png" alt="">Jackpot Heaven</a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="#promotions">Promotions</a>
+      <a href="#how-it-works">How it works</a>
+      <a href="#games">Games</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#policies">Policies</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="nav-actions">
+      <a class="btn btn-ghost btn-sm nav-msg" data-message href="#">Message us</a>
+      <button class="btn btn-ghost btn-sm nav-msg" type="button" data-signin hidden>
+        <span class="signin-label">Sign in</span>
+        <span class="who"><img alt="" data-who-img hidden><span data-who-name></span></span>
+      </button>
+      <button class="btn btn-primary btn-sm" type="button" data-topup>Top up</button>
+    </div>
+  </div>
+  <nav class="chips" aria-label="Sections">
+    <a href="#promotions">🎁 Promotions</a>
+    <a href="#games">Games</a>
+    <a href="#reviews">⭐ Reviews</a>
+    <a href="#how-it-works">How it works</a>
+    <a href="#policies">Policies</a>
+    <a href="#faq">FAQ</a>
+  </nav>
+</header>
+
+<div class="ticker" aria-label="Current promotions">
+  <div class="ticker-track">
+    <ul>
+      <li><span>🎁 100% bonus</span> on your first deposit</li>
+      <li><span>🎮 $3 Free Play</span> for new players</li>
+      <li><span>🤝 Refer a friend</span> — get $20</li>
+      <li><span>🔥 7-day streak</span> — up to $5 a day</li>
+      <li><span>⚡ Fast cashouts</span> — up to $500 within 24 hours</li>
+    </ul>
+    <ul aria-hidden="true">
+      <li><span>🎁 100% bonus</span> on your first deposit</li>
+      <li><span>🎮 $3 Free Play</span> for new players</li>
+      <li><span>🤝 Refer a friend</span> — get $20</li>
+      <li><span>🔥 7-day streak</span> — up to $5 a day</li>
+      <li><span>⚡ Fast cashouts</span> — up to $500 within 24 hours</li>
+    </ul>
+  </div>
+</div>
+
+<dialog id="topup" aria-labelledby="topup-title">
+  <form method="dialog" class="topup-close-row">
+    <button class="topup-x" aria-label="Close">×</button>
+  </form>
+  <p class="eyebrow">Top up</p>
+  <h2 id="topup-title">Load your balance</h2>
+  <p class="topup-lead">Pick how you want to pay, enter any amount, then message us your game username — we'll load it in minutes.</p>
+  <div class="topup-options">
+    <a class="pay-opt pay-featured" data-pay="stripe" data-method="cashapp" href="#" target="_blank" rel="noopener noreferrer">
+      <span class="pay-mark mark-cashapp" aria-hidden="true">$</span>
+      <span class="pay-name">Cash App Pay</span>
+      <span class="pay-sub">Approve in your Cash App — fastest</span>
+      <span class="pay-arrow" aria-hidden="true">→</span>
+    </a>
+    <a class="pay-opt" data-pay="stripe" data-method="applepay" href="#" target="_blank" rel="noopener noreferrer">
+      <span class="pay-mark mark-apple" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.37 12.6c-.02-2.2 1.8-3.26 1.88-3.31-1.03-1.5-2.62-1.7-3.18-1.73-1.35-.14-2.65.8-3.33.8-.69 0-1.75-.78-2.88-.76-1.48.02-2.85.86-3.61 2.18-1.54 2.67-.39 6.62 1.11 8.79.73 1.06 1.6 2.25 2.75 2.2 1.1-.04 1.52-.71 2.85-.71 1.33 0 1.71.71 2.88.69 1.19-.02 1.94-1.08 2.66-2.15.84-1.23 1.19-2.42 1.21-2.48-.03-.01-2.32-.89-2.34-3.52zM14.2 6.13c.6-.74 1.01-1.75.9-2.77-.87.04-1.93.58-2.55 1.31-.56.65-1.05 1.69-.92 2.69.97.07 1.96-.49 2.57-1.23z"/></svg></span>
+      <span class="pay-name">Apple Pay</span>
+      <span class="pay-sub">Pay with Face ID using a card in your Wallet</span>
+      <span class="pay-arrow" aria-hidden="true">→</span>
+    </a>
+    <a class="pay-opt" data-pay="stripe" data-method="googlepay" href="#" target="_blank" rel="noopener noreferrer">
+      <span class="pay-mark mark-google" aria-hidden="true">G</span>
+      <span class="pay-name">Google Pay</span>
+      <span class="pay-sub">One tap with a card saved to Google</span>
+      <span class="pay-arrow" aria-hidden="true">→</span>
+    </a>
+    <a class="pay-opt" data-pay="stripe" data-method="card" href="#" target="_blank" rel="noopener noreferrer">
+      <span class="pay-mark mark-card" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M2.5 10h19M6.5 15h4"/></svg></span>
+      <span class="pay-name">Debit or credit card</span>
+      <span class="pay-sub">Visa, Mastercard, Amex, Discover, Chime debit</span>
+      <span class="pay-arrow" aria-hidden="true">→</span>
+    </a>
+    <a class="pay-opt" data-pay="paypal" data-method="paypal" href="#" target="_blank" rel="noopener noreferrer">
+      <span class="pay-mark mark-paypal" aria-hidden="true">P</span>
+      <span class="pay-name">PayPal</span>
+      <span class="pay-sub">PayPal balance, bank or card</span>
+      <span class="pay-arrow" aria-hidden="true">→</span>
+    </a>
+  </div>
+  <p class="topup-secure">🔒 Secure checkout by Stripe and PayPal. We never see your card details.</p>
+  <a class="btn btn-ghost topup-msg" data-message href="#">Paid? Message us to load it</a>
+  <p class="topup-note">18+ only. Entertainment only — play within your limits.</p>
+</dialog>
+
+<dialog id="signin" aria-labelledby="signin-title">
+  <form method="dialog" class="topup-close-row">
+    <button class="topup-x" aria-label="Close">×</button>
+  </form>
+  <div class="signin-out">
+    <p class="eyebrow">Sign in</p>
+    <h2 id="signin-title">Sign in to chat with us</h2>
+    <p class="topup-lead">Sign in once with Google. Your chat and its history stay with you on your phone, computer or any browser.</p>
+    <div class="inapp" hidden>
+      <p>Google sign-in doesn't work inside the Facebook or Instagram app. Tap <strong>•••</strong> and choose <strong>Open in browser</strong>, then sign in there.</p>
+      <button class="btn btn-ghost btn-sm" type="button" data-copy-link>Copy link</button>
+      <p style="margin:14px 0 8px">Or message us on Messenger instead:</p>
+      <a class="btn btn-primary btn-sm" data-messenger href="#" target="_blank" rel="noopener noreferrer">Message us on Messenger</a>
+    </div>
+    <div class="gsi-box" id="gsi-button"></div>
+  </div>
+  <div class="signin-state" hidden>
+    <p class="eyebrow">Signed in</p>
+    <h2>Your account</h2>
+    <div class="account-row">
+      <img alt="" data-acct-img hidden>
+      <div><strong data-acct-name></strong><small data-acct-email></small></div>
+    </div>
+    <div class="signin-actions">
+      <a class="btn btn-primary" data-message href="#">Open my chat</a>
+      <button class="btn btn-ghost" type="button" data-signout>Sign out</button>
+    </div>
+  </div>
+  <p class="signin-msg" role="status" aria-live="polite"></p>
+  <p class="topup-note">18+ only. We use your Google name and email only to keep your chat history.</p>
+</dialog>
+
+<main>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">Jackpot Heaven · 18+</p>
+        <a class="hero-offer" href="#promotions"><b>NEW</b> 100% first-deposit bonus + $3 Free Play →</a>
+        <h1>Heavenly jackpots.<br><em>Royal payouts.</em></h1>
+        <p class="lead">An online gaming lounge with daily games, fast cashouts and a team that actually answers. No forms, no hoops — one message and you're in.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" data-message href="#">Message us to join</a>
+          <a class="btn btn-ghost" href="#how-it-works">See how it works</a>
+        </div>
+        <a class="fb-card" data-facebook href="#" target="_blank" rel="noopener noreferrer">
+          <span class="fb-dot" aria-hidden="true">f</span>
+          <span><small>Find us on Facebook</small><strong>Connect with Jackpot Heaven</strong></span>
+          <span class="arrow" aria-hidden="true">→</span>
+        </a>
+        <p class="note">Entertainment only. Play for fun and set your own limits.</p>
+      </div>
+      <div class="hero-art">
+        <img src="assets/cover.jpg" alt="Gold Jackpot Heaven crown over a pile of gold coins" width="1200" height="1200">
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust strip -->
+  <div class="strip" style="border-top:1px solid var(--line)">
+    <ul class="wrap">
+      <li>Fast cashouts</li>
+      <li>Secure payments</li>
+      <li>Real people on support</li>
+    </ul>
+  </div>
+
+  <!-- Promotions -->
+  <section id="promotions">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Promotions</p>
+        <h2>Bonuses on us. Every week.</h2>
+        <p class="lead">Every offer is added by a real person on our team — tap <strong>Claim</strong>, tell us in chat, and we'll load it.</p>
+      </div>
+      <div class="promos">
+        <article class="promo wide">
+          <div>
+            <span class="promo-tag">New players</span>
+            <h3>100% first-deposit bonus</h3>
+            <p>We double your first deposit. Whatever you load the first time, we match it — dollar for dollar.</p>
+            <div class="cta-row">
+              <button class="btn btn-primary" type="button" data-topup>Top up now</button>
+              <button class="btn btn-ghost" type="button" data-claim="first-deposit-bonus">Claim in chat</button>
+            </div>
+          </div>
+          <div class="promo-math" aria-label="Example: deposit 20 dollars, play with 40 dollars">
+            <div><small>You deposit</small><strong>$20</strong></div>
+            <div class="eq">→</div>
+            <div><small>You play with</small><strong style="color:var(--gold)">$40</strong></div>
+          </div>
+        </article>
+
+        <article class="promo">
+          <span class="promo-tag">Welcome gift</span>
+          <h3>$3 Free Play</h3>
+          <p>Try any game on us. Win with it and cash out up to <strong>$10</strong> — no deposit needed.</p>
+          <div class="cta-row"><button class="btn btn-primary btn-sm" type="button" data-claim="free-play">Claim $3 Free Play</button></div>
+        </article>
+
+        <article class="promo">
+          <span class="promo-tag">Refer &amp; earn</span>
+          <h3>Get $20 for every friend</h3>
+          <p>When a friend you invite makes a first deposit of <strong>$20 or more</strong>, you get <strong>$20</strong>. They get the 100% first-deposit bonus.</p>
+          <div class="ref-box" data-ref-in hidden>
+            <div class="ref-code"><span style="color:var(--muted);font-size:13px">Your code</span><code data-ref-code></code></div>
+            <div class="share-row">
+              <a class="btn btn-ghost btn-sm" data-share="whatsapp" href="#" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+              <a class="btn btn-ghost btn-sm" data-share="telegram" href="#" target="_blank" rel="noopener noreferrer">Telegram</a>
+              <a class="btn btn-ghost btn-sm" data-share="sms" href="#">Text</a>
+              <button class="btn btn-ghost btn-sm" type="button" data-share="copy">Copy link</button>
+            </div>
+          </div>
+          <div class="cta-row" data-ref-out><button class="btn btn-primary btn-sm" type="button" data-signin-ref>Sign in to get your code</button></div>
+          <form class="code-form" data-code-form>
+            <label class="sr-only" for="ref-input">Friend's referral code</label>
+            <input id="ref-input" name="code" placeholder="Got a friend's code?" autocomplete="off" maxlength="10">
+            <button class="btn btn-ghost btn-sm" type="submit">Apply</button>
+          </form>
+          <p class="ref-status" role="status" aria-live="polite"></p>
+        </article>
+
+        <article class="promo wide">
+          <div>
+            <span class="promo-tag">Daily rewards</span>
+            <h3>7-day streak — $5 on day 7</h3>
+            <p>Deposit on back-to-back days and claim a reward each day. Hit all seven for the <strong>$5</strong> finish.</p>
+            <p class="streak-note">Message us each day you deposit to claim. Miss a day and the streak restarts at Day 1.</p>
+            <div class="cta-row"><button class="btn btn-primary btn-sm" type="button" data-claim="daily-reward">Claim today's reward</button></div>
+          </div>
+          <ol class="streak" aria-label="Daily rewards by streak day" data-streak>
+            <li><small>Day 1</small><b>$0.25</b></li>
+            <li><small>Day 2</small><b>$0.50</b></li>
+            <li><small>Day 3</small><b>$0.75</b></li>
+            <li><small>Day 4</small><b>$1</b></li>
+            <li><small>Day 5</small><b>$1.50</b></li>
+            <li><small>Day 6</small><b>$2</b></li>
+            <li class="top"><small>Day 7</small><b>$5</b></li>
+          </ol>
+        </article>
+      </div>
+      <p class="promo-foot">Bonuses are added by our team after your payment is confirmed. One welcome bonus per player. <a href="#policies">Bonus terms</a> · 18+</p>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section id="how-it-works">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">How it works</p>
+        <h2>Three steps. That's it.</h2>
+      </div>
+      <ol class="steps">
+        <li><h3>Message us</h3><p>Send our page a message and we'll get you set up — no forms.</p></li>
+        <li><h3>Get set up</h3><p>Load your balance with the method you already use. First time? We'll walk you through it.</p></li>
+        <li><h3>Start playing</h3><p>Play your way, then cash out on the policy posted below.</p></li>
+      </ol>
+      <p class="eyebrow" style="margin-bottom:12px">Payment methods</p>
+      <ul class="pay" aria-label="Accepted payment methods">
+        <li>Cash App</li><li>Apple Pay</li><li>Google Pay</li><li>PayPal</li><li>Visa</li><li>Mastercard</li><li>Amex</li><li>Discover</li><li>Chime</li><li>Venmo</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Games -->
+  <section id="games">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Games</p>
+        <h2>Pick your floor</h2>
+        <p class="lead">Download whichever game you want to play, then message us and we'll have your account loaded in minutes.</p>
+      </div>
+      <div class="games">
+        <article class="game">
+          <div class="game-logo"><img src="assets/games/gamevault-logo.png" alt="Game Vault" loading="lazy"></div>
+          <h3>Game Vault</h3>
+          <p>The original vault floor — fish games and slots.</p>
+          <a class="btn btn-ghost btn-sm" href="https://download.gamevault999.com" target="_blank" rel="noopener noreferrer">Download</a>
+        </article>
+        <article class="game">
+          <div class="game-logo"><img src="assets/games/juwa-logo.png" alt="Juwa" loading="lazy"></div>
+          <h3>Juwa</h3>
+          <p>A player favorite — deep game library, smooth play.</p>
+          <a class="btn btn-ghost btn-sm" href="https://dl.juwa777.com/" target="_blank" rel="noopener noreferrer">Download</a>
+        </article>
+        <article class="game">
+          <div class="game-logo"><img src="assets/games/milkyway-logo.png" alt="Milkyway" loading="lazy"></div>
+          <h3>Milkyway</h3>
+          <p>Big, bright, and easy to pick up for a first-timer.</p>
+          <a class="btn btn-ghost btn-sm" href="https://milkywayapp.xyz/" target="_blank" rel="noopener noreferrer">Download</a>
+        </article>
+        <article class="game">
+          <div class="game-logo"><img src="assets/games/firekirin-logo.png" alt="Fire Kirin" loading="lazy"></div>
+          <h3>Fire Kirin</h3>
+          <p>High-energy floor for players who want the big swings.</p>
+          <a class="btn btn-ghost btn-sm" href="https://start.firekirin.xyz:8580/" target="_blank" rel="noopener noreferrer">Download</a>
+        </article>
+      </div>
+      <p class="fine">Accounts are set up by our team, not self-serve — message us after you download and we'll get you playing.</p>
+      <a class="btn btn-primary" data-message href="#">Message us to get set up</a>
+    </div>
+  </section>
+
+  <!-- Reviews -->
+  <section id="reviews">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Player reviews</p>
+        <h2>What players say</h2>
+        <p class="lead">Every review comes from a real player who signed in with Google. We show the good and the not-so-good.</p>
+        <div class="rev-summary" data-rev-summary hidden>
+          <strong data-rev-avg></strong>
+          <div><span class="stars-row" data-rev-stars></span><small data-rev-total></small></div>
+        </div>
+      </div>
+      <div class="reviews" data-rev-list>
+        <p class="rev-empty">No reviews yet — be the first to share how it went.</p>
+      </div>
+      <button class="btn btn-ghost btn-sm rev-more" type="button" data-rev-more hidden>Show more reviews</button>
+
+      <div class="rev-form" id="write-review">
+        <h3>Leave a review</h3>
+        <p data-rev-intro>Played with us? Tell other players how it went. Reviews appear after our team checks them.</p>
+        <div data-rev-out hidden>
+          <button class="btn btn-primary btn-sm" type="button" data-rev-signin>Sign in with Google to review</button>
+        </div>
+        <form data-rev-form hidden novalidate>
+          <fieldset class="star-pick" aria-label="Your rating">
+            <input type="radio" id="rs5" name="rating" value="5"><label for="rs5" title="5 stars">★</label>
+            <input type="radio" id="rs4" name="rating" value="4"><label for="rs4" title="4 stars">★</label>
+            <input type="radio" id="rs3" name="rating" value="3"><label for="rs3" title="3 stars">★</label>
+            <input type="radio" id="rs2" name="rating" value="2"><label for="rs2" title="2 stars">★</label>
+            <input type="radio" id="rs1" name="rating" value="1"><label for="rs1" title="1 star">★</label>
+          </fieldset>
+          <label class="sr-only" for="rev-text">Your review</label>
+          <textarea id="rev-text" name="text" maxlength="600" placeholder="How were the games, the deposits and the cashouts?"></textarea>
+          <p class="rev-count"><span data-rev-chars>0</span>/600</p>
+          <button class="btn btn-primary btn-sm" type="submit">Post review</button>
+        </form>
+        <p class="rev-status" role="status" aria-live="polite"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Policies -->
+  <section id="policies">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Trust &amp; policies</p>
+        <h2>Posted openly. No fine print.</h2>
+      </div>
+      <div class="policies">
+        <div class="policy feature">
+          <h3>Cashout policy</h3>
+          <ul>
+            <li>No minimum cashout — cash out anytime</li>
+            <li>Your balance just needs to be above your deposit</li>
+            <li>Maximum cashout: $500 within 24 hours</li>
+            <li>Remaining amount can be cashed out after 24 hours</li>
+            <li>Fast transaction processing</li>
+          </ul>
+        </div>
+        <div class="policy">
+          <h3>Deposits</h3>
+          <ul>
+            <li>Cash App Pay, Apple Pay, Google Pay, PayPal and any debit or credit card</li>
+            <li>Quick, straightforward deposits</li>
+            <li>Message us any time with questions</li>
+          </ul>
+        </div>
+        <div class="policy">
+          <h3>Bonuses</h3>
+          <ul>
+            <li>100% match on your first deposit — one per player</li>
+            <li>$3 Free Play for new players; its winnings cash out up to $10</li>
+            <li>Refer a friend: $20 when their first deposit is $20 or more</li>
+            <li>Daily streak: $0.25 up to $5 on day 7, on days you deposit</li>
+            <li>Claim in chat — our team adds every bonus by hand</li>
+          </ul>
+        </div>
+      </div>
+      <p class="policy-foot">These are the same terms posted on our Facebook page. No surprises at cashout.</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="wrap faq">
+      <div class="sec-head">
+        <p class="eyebrow">FAQ</p>
+        <h2>Questions, answered straight</h2>
+      </div>
+      <details>
+        <summary>How do I join?</summary>
+        <p>Message our page. We'll get you set up — no forms, no hoops.</p>
+      </details>
+      <details>
+        <summary>Is there a minimum cashout?</summary>
+        <p>No minimum. You can cash out anytime your balance is above your deposit.</p>
+      </details>
+      <details>
+        <summary>How fast are cashouts?</summary>
+        <p>Up to $500 is processed within 24 hours. Any remaining balance can be cashed out after that.</p>
+      </details>
+      <details>
+        <summary>Which payment methods do you take?</summary>
+        <p>Tap <strong>Top up</strong> to pay with Cash App Pay, Apple Pay, Google Pay, PayPal, or any Visa, Mastercard, Amex, Discover or Chime debit card. Prefer Venmo or something else? Message us and we'll sort it out.</p>
+      </details>
+      <details>
+        <summary>How do I claim a bonus?</summary>
+        <p>Tap <strong>Claim</strong> on any offer in Promotions (or just message us). Our team checks your payment and adds the bonus to your game — usually within minutes.</p>
+      </details>
+      <details>
+        <summary>How does refer-a-friend work?</summary>
+        <p>Sign in to get your personal code and share it. When your friend enters it (or opens your link) before their first deposit, and that first deposit is $20 or more, we add $20 for you and the 100% first-deposit bonus for them.</p>
+      </details>
+      <details>
+        <summary>How does the daily streak work?</summary>
+        <p>Each day you deposit, message us to claim that day's reward: $0.25, $0.50, $0.75, $1, $1.50, $2, then $5 on day 7. Skip a day and the streak starts again at day 1.</p>
+      </details>
+      <details>
+        <summary>Do I need to be 18?</summary>
+        <p>Yes — 18+ only (21+ where your region requires it).</p>
+      </details>
+      <details>
+        <summary>How do I get help if something's wrong?</summary>
+        <p>Message us on Facebook anytime and a real person on our team will reply.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- Closing CTA -->
+  <section class="closing">
+    <div class="wrap">
+      <h2>The gates are open.</h2>
+      <p class="lead">One message and you're in.</p>
+      <a class="btn btn-primary" data-message href="#">Message us to join</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="#top" style="margin-bottom:12px"><img src="assets/logo.png" alt="">Jackpot Heaven</a>
+        <p>Heavenly jackpots and royal payouts — an online gaming lounge with fast cashouts and real support.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#how-it-works">How it works</a></li>
+          <li><a href="#games">Games</a></li>
+          <li><a href="#policies">Policies</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a data-message href="#">Message us</a></li>
+          <li><a data-facebook href="#" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+          <li><a href="#" data-signin-link hidden>Sign in</a></li>
+          <li><a href="privacy.html">Privacy policy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Play responsibly</h4>
+        <p>18+ only. Entertainment first — play for fun and set your own limits. Need help? Call 1-800-GAMBLER.</p>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p>&copy; <span id="year">2026</span> Jackpot Heaven. All rights reserved.</p>
+      <p>18+ · Entertainment only · No guaranteed winnings</p>
+    </div>
+  </div>
+</footer>
+
+<div class="install" role="dialog" aria-labelledby="install-title" hidden>
+  <div class="install-row">
+    <img src="assets/icons/icon-192.png" alt="">
+    <div>
+      <strong id="install-title">Get the Jackpot Heaven app</strong>
+      <small>Add it to your home screen — one tap to play, chat and claim bonuses.</small>
+    </div>
+    <button class="install-x" type="button" aria-label="Close" data-install-close>×</button>
+  </div>
+  <ol class="install-steps" data-install-steps hidden>
+    <li>Tap <b>Share</b> <svg class="share-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 15V3m0 0L8 7m4-4 4 4"/><path d="M6 11H5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1h-1"/></svg> at the bottom of Safari</li>
+    <li>Scroll down and tap <b>Add to Home Screen</b></li>
+    <li>Tap <b>Add</b> — done!</li>
+  </ol>
+  <div class="install-actions">
+    <button class="btn btn-ghost btn-sm" type="button" data-install-close>Not now</button>
+    <button class="btn btn-primary btn-sm" type="button" data-install-go>Install</button>
+  </div>
+</div>
+
+<div class="mobile-cta"><a class="btn btn-primary" data-message href="#">Message us to join</a></div>
+
+<script>
+  // ===== Edit these =====
+  // FACEBOOK_URL: your Jackpot Heaven Facebook page.
+  // MESSAGE_URL:  fallback for "Message us" buttons — usually https://m.me/<your-page-username>
+  // CHAT_TOKEN:   the Website inbox token from Chatwoot (Settings → Inboxes → your website inbox).
+  //               Leave empty to turn the on-site chat off.
+  var FACEBOOK_URL = "https://www.facebook.com/jackpotheaven";
+  var MESSAGE_URL = "https://m.me/jackpotheaven";
+  var CHAT_URL = "";
+  var CHAT_TOKEN = "";
+  // PAYPAL_URL: your PayPal.me or PayPal payment link.  STRIPE_URL: your Stripe Payment Link.
+  // An empty link shows that option as "Soon".
+  var PAYPAL_URL = "";
+  var STRIPE_URL = "";
+  // GOOGLE_CLIENT_ID: the Jackpot Heaven Google sign-in client ID. When set, players sign in
+  // with Google before chatting, so their chat and its history follow them to any device.
+  // Leave empty to keep the chat open to everyone (history then stays in that one browser).
+  var GOOGLE_CLIENT_ID = "";
+  var AUTH_URL = CHAT_URL + "/jh-auth/google";
+  // ======================
+
+  // Top up panel
+  var topup = document.getElementById("topup");
+  [["paypal", PAYPAL_URL], ["stripe", STRIPE_URL]].forEach(function (p) {
+    document.querySelectorAll('[data-pay="' + p[0] + '"]').forEach(function (a) {
+      if (p[1]) { a.href = p[1]; } else { a.classList.add("is-off"); a.setAttribute("aria-disabled", "true"); }
+    });
+  });
+  // Only offer the wallet that works on this phone: Apple Pay on iPhone/iPad, Google Pay on
+  // Android. Computers see both (Apple Pay works in Safari on a Mac, Google Pay in Chrome).
+  (function () {
+    var ua = navigator.userAgent || "";
+    var apple = /iPhone|iPad|iPod/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
+    var android = /Android/.test(ua);
+    if (android) document.querySelector('[data-method="applepay"]').hidden = true;
+    if (apple) document.querySelector('[data-method="googlepay"]').hidden = true;
+  })();
+  document.querySelectorAll("[data-topup]").forEach(function (b) {
+    b.addEventListener("click", function () { topup.showModal(); });
+  });
+  topup.addEventListener("click", function (e) { if (e.target === topup) topup.close(); });
+  // Opening the chat from inside the panel closes the panel first.
+  topup.querySelector("[data-message]").addEventListener("click", function () { topup.close(); });
+
+  document.querySelectorAll("[data-facebook]").forEach(function (a) { a.href = FACEBOOK_URL; });
+  document.querySelectorAll("[data-message]").forEach(function (a) {
+    a.href = MESSAGE_URL;
+    a.target = "_blank";
+    a.rel = "noopener noreferrer";
+    // When the on-site chat is ready, "Message us" opens it instead of leaving the page.
+    // With sign-in on, players sign in first so they always land back in their own chat.
+    a.addEventListener("click", function (e) {
+      if (!CHAT_TOKEN) return;
+      if (needsSignin() || window.chatReady) { e.preventDefault(); openChat(); }
+      // Otherwise the chat hasn't loaded (slow or blocked): the link opens Messenger instead.
+    });
+  });
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // ===== Player sign-in + chat identity =====
+  // A signed-in player is identified to the chat by a stable ID plus a hash that only our
+  // server can make (see chatwoot-server/auth). The chat then reopens that player's own
+  // conversation, with its history, on any device. The hash is stored in this browser so
+  // the player stays signed in.
+  var SIGNIN_ON = !!(CHAT_TOKEN && GOOGLE_CLIENT_ID);
+  var ID_KEY = "jh_chat_identity";
+  var signin = document.getElementById("signin");
+  var signinMsg = signin.querySelector(".signin-msg");
+  var openChatAfterSignin = false;
+  var identityApplied = false;
+
+  function store(get, key, val) {
+    try {
+      if (get) return localStorage.getItem(key);
+      if (val === null) localStorage.removeItem(key); else localStorage.setItem(key, val);
+    } catch (e) { return null; }
+  }
+  function getIdentity() {
+    try { return JSON.parse(store(true, ID_KEY) || "null"); } catch (e) { return null; }
+  }
+  // Google refuses sign-in inside the Facebook / Instagram in-app browsers.
+  function isInAppBrowser() {
+    return /(FBAN|FBAV|FB_IAB|FBIOS|Instagram|MicroMessenger|Snapchat)|Line\//i.test(navigator.userAgent || "");
+  }
+  function say(text, isError) {
+    signinMsg.textContent = text || "";
+    signinMsg.classList.toggle("is-error", !!isError);
+  }
+
+  function renderAccount() {
+    var id = getIdentity();
+    var signedIn = !!id;
+    document.querySelectorAll("[data-signin]").forEach(function (b) {
+      b.hidden = !SIGNIN_ON;
+      b.classList.toggle("is-signed-in", signedIn);
+      b.setAttribute("aria-label", signedIn ? "Your account" : "Sign in");
+    });
+    document.querySelectorAll("[data-signin-link]").forEach(function (a) {
+      a.hidden = !SIGNIN_ON;
+      a.textContent = signedIn ? "Your account" : "Sign in";
+    });
+    document.querySelectorAll("[data-who-name]").forEach(function (el) {
+      el.textContent = signedIn ? (id.name || id.email || "Signed in").split(" ")[0] : "";
+    });
+    document.querySelectorAll("[data-who-img], [data-acct-img]").forEach(function (img) {
+      if (signedIn && id.avatar_url) { img.src = id.avatar_url; img.hidden = false; } else { img.hidden = true; }
+    });
+    signin.querySelector("[data-acct-name]").textContent = signedIn ? (id.name || "Player") : "";
+    signin.querySelector("[data-acct-email]").textContent = signedIn ? (id.email || "") : "";
+    signin.querySelector(".signin-out").hidden = signedIn;
+    signin.querySelector(".signin-state").hidden = !signedIn;
+  }
+
+  function applyIdentity() {
+    var id = getIdentity();
+    if (!id || !window.chatReady || identityApplied) return;
+    identityApplied = true;
+    window.$chatwoot.setUser(id.identifier, {
+      name: id.name || undefined,
+      email: id.email || undefined,
+      avatar_url: id.avatar_url || undefined,
+      identifier_hash: id.identifier_hash
+    });
+    // Give the chat a moment to switch to this player before tagging their contact.
+    setTimeout(syncPlayerAttributes, 1500);
+  }
+
+  // Every website chat comes from a Google-verified player, so each one is named by their
+  // Google account and nobody can pose as another player by typing their email.
+  function needsSignin() { return SIGNIN_ON && !getIdentity(); }
+  function openChat() {
+    if (needsSignin()) {
+      openChatAfterSignin = true;
+      openSignin();
+      return;
+    }
+    if (window.$chatwoot && window.chatReady) {
+      applyIdentity();
+      window.$chatwoot.toggle("open");
+    } else {
+      // Chat still loading: open it as soon as it is ready.
+      window.openChatWhenReady = true;
+    }
+  }
+
+  var gsiLoading = false;
+  function renderGoogleButton() {
+    var box = document.getElementById("gsi-button");
+    if (!window.google || !google.accounts || !google.accounts.id) return false;
+    var width = Math.max(200, Math.min(360, Math.floor(box.clientWidth || 300)));
+    box.innerHTML = "";
+    google.accounts.id.initialize({ client_id: GOOGLE_CLIENT_ID, callback: onGoogleCredential, ux_mode: "popup" });
+    google.accounts.id.renderButton(box, { type: "standard", theme: "filled_black", size: "large", shape: "pill", text: "continue_with", locale: "en", width: width });
+    return true;
+  }
+  function loadGoogle() {
+    if (renderGoogleButton() || gsiLoading) return;
+    gsiLoading = true;
+    var g = document.createElement("script");
+    g.src = "https://accounts.google.com/gsi/client";
+    g.async = true;
+    g.onload = function () { renderGoogleButton(); };
+    g.onerror = function () { gsiLoading = false; say("Google sign-in couldn't load. Check your connection and try again.", true); };
+    document.head.appendChild(g);
+  }
+
+  function onGoogleCredential(resp) {
+    say("Signing you in…");
+    fetch(AUTH_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ credential: resp.credential })
+    })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function (id) {
+        store(false, ID_KEY, JSON.stringify(id));
+        identityApplied = false;
+        renderAccount();
+        renderReferral();
+        renderReviewForm();
+        say("");
+        applyIdentity();
+        if (openChatAfterSignin) {
+          openChatAfterSignin = false;
+          signin.close();
+          openChat();
+        }
+      })
+      .catch(function () { say("We couldn't sign you in. Please try again, or message us on Facebook.", true); });
+  }
+
+  function openSignin() {
+    say("");
+    renderAccount();
+    var inApp = isInAppBrowser() && !getIdentity();
+    signin.querySelector(".inapp").hidden = !inApp;
+    document.getElementById("gsi-button").hidden = inApp;
+    signin.showModal();
+    if (!inApp && !getIdentity()) loadGoogle();
+  }
+
+  document.querySelectorAll("[data-signin], [data-signin-link]").forEach(function (b) {
+    b.addEventListener("click", function (e) { e.preventDefault(); openChatAfterSignin = false; openSignin(); });
+  });
+  signin.addEventListener("click", function (e) { if (e.target === signin) signin.close(); });
+  signin.addEventListener("close", function () { openChatAfterSignin = false; });
+  signin.querySelectorAll("[data-message]").forEach(function (a) { a.addEventListener("click", function () { signin.close(); }); });
+  signin.querySelector("[data-signout]").addEventListener("click", function () {
+    store(false, ID_KEY, null);
+    identityApplied = false;
+    if (window.google && google.accounts && google.accounts.id) google.accounts.id.disableAutoSelect();
+    // Forget this player's chat in this browser, so the next person here starts fresh.
+    if (window.$chatwoot) window.$chatwoot.reset();
+    renderAccount();
+    renderReferral();
+    renderReviewForm();
+    say("You're signed out.");
+    loadGoogle();
+  });
+  signin.querySelectorAll("[data-messenger]").forEach(function (a) {
+    a.href = MESSAGE_URL;
+    a.addEventListener("click", function () { signin.close(); });
+  });
+  store(false, "jh_chat_skip_signin", null); // clear the old "chat without signing in" choice
+  signin.querySelector("[data-copy-link]").addEventListener("click", function () {
+    var btn = this;
+    (navigator.clipboard ? navigator.clipboard.writeText(location.href) : Promise.reject())
+      .then(function () { btn.textContent = "Link copied"; setTimeout(function () { btn.textContent = "Copy link"; }, 2500); })
+      .catch(function () { say("Copy this link: " + location.href); });
+  });
+  renderAccount();
+
+  // ===== Home-screen app (PWA) =====
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", function () { navigator.serviceWorker.register("/sw.js").catch(function () {}); });
+  }
+
+  // Install popup — phones only. Android Chrome: our button opens the phone's own install
+  // prompt. iPhone Safari: Apple doesn't allow that, so the button shows the two steps.
+  (function () {
+    var box = document.querySelector(".install");
+    var KEY = "jh_install_dismissed";
+    var ua = navigator.userAgent || "";
+    var isPhone = /iPhone|iPod/.test(ua) || (/Android/.test(ua) && /Mobile/.test(ua));
+    var isIOSSafari = /iPhone|iPod/.test(ua) && /Safari/.test(ua) && !/CriOS|FxiOS|EdgiOS|OPiOS/.test(ua);
+    var installed = window.matchMedia("(display-mode: standalone)").matches || navigator.standalone === true;
+    var inApp = /(FBAN|FBAV|FB_IAB|FBIOS|Instagram|MicroMessenger|Snapchat)|Line\//i.test(ua);
+    var dismissedAt = +(store(true, KEY) || 0);
+    var recentlyDismissed = Date.now() - dismissedAt < 7 * 24 * 3600 * 1000;
+    var deferred = null, shown = false;
+
+    function canShow() { return isPhone && !installed && !inApp && !recentlyDismissed; }
+    function show() {
+      if (shown || !canShow()) return;
+      // Don't cover a panel the player is using; try again a bit later.
+      if (document.querySelector("dialog[open]") || (window.$chatwoot && window.$chatwoot.isOpen)) { setTimeout(show, 5000); return; }
+      shown = true; box.hidden = false;
+      requestAnimationFrame(function () { box.classList.add("is-in"); });
+    }
+    function hide(remember) {
+      box.classList.remove("is-in");
+      setTimeout(function () { box.hidden = true; }, 250);
+      if (remember) store(false, KEY, String(Date.now()));
+    }
+
+    window.addEventListener("beforeinstallprompt", function (e) {
+      e.preventDefault(); deferred = e;               // keep Chrome's prompt for our button
+      if (canShow()) setTimeout(show, 6000);
+    });
+    if (isIOSSafari && canShow()) setTimeout(show, 6000);
+
+    box.querySelectorAll("[data-install-close]").forEach(function (b) { b.addEventListener("click", function () { hide(true); }); });
+    box.querySelector("[data-install-go]").addEventListener("click", function () {
+      if (deferred) {
+        deferred.prompt();
+        deferred.userChoice.then(function (r) { deferred = null; hide(r.outcome !== "accepted"); });
+      } else {
+        box.querySelector("[data-install-steps]").hidden = false;
+        this.textContent = "Got it"; this.onclick = function () { hide(true); };
+      }
+    });
+    window.addEventListener("appinstalled", function () {
+      hide(false); store(false, KEY, String(Date.now()));
+      toast("Installed! Find Jackpot Heaven on your home screen.");
+    });
+  })();
+
+  // ===== Section highlighting (header links + phone section row) =====
+  (function () {
+    var links = document.querySelectorAll('.nav-links a[href^="#"], .chips a');
+    var chipsRow = document.querySelector(".chips");
+    var sections = [];
+    links.forEach(function (a) {
+      var sec = document.querySelector(a.getAttribute("href"));
+      if (sec && sections.indexOf(sec) < 0) sections.push(sec);
+    });
+    if (!("IntersectionObserver" in window) || !sections.length) return;
+    function setActive(id) {
+      links.forEach(function (a) {
+        var on = a.getAttribute("href") === "#" + id;
+        a.classList.toggle("is-active", on);
+        if (on) a.setAttribute("aria-current", "true"); else a.removeAttribute("aria-current");
+        // Keep the active chip visible in the sideways-scrolling row.
+        if (on && a.parentNode === chipsRow && chipsRow.scrollWidth > chipsRow.clientWidth) {
+          chipsRow.scrollTo({ left: a.offsetLeft - 20, behavior: "smooth" });
+        }
+      });
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) setActive(en.target.id); });
+      // Back above the first section (hero): nothing is highlighted.
+      if (window.scrollY < sections[0].offsetTop - window.innerHeight * 0.5) setActive(null);
+    }, { rootMargin: "-45% 0px -50% 0px" });
+    sections.forEach(function (sec) { io.observe(sec); });
+  })();
+
+  // ===== Player reviews =====
+  // Reviews live on our chat server (chatwoot-server/auth). Only signed-in players can post,
+  // one each, and nothing shows until staff approve it at /jh-auth/admin.
+  var REVIEWS_URL = CHAT_URL + "/jh-auth/reviews";
+  var revList = document.querySelector("[data-rev-list]");
+  var revStatus = document.querySelector(".rev-status");
+  var allReviews = [], revShown = 6;
+
+  function starText(n) { return "★★★★★".slice(0, n) + "☆☆☆☆☆".slice(0, 5 - n); }
+
+  function reviewCard(r) {
+    var card = document.createElement("article"); card.className = "review";
+    var head = document.createElement("div"); head.className = "review-head";
+    var av;
+    if (r.avatar_url) { av = document.createElement("img"); av.src = r.avatar_url; av.alt = ""; av.loading = "lazy"; av.referrerPolicy = "no-referrer"; }
+    else { av = document.createElement("span"); av.className = "avatar"; av.textContent = (r.name || "P").charAt(0).toUpperCase(); }
+    var who = document.createElement("div");
+    var name = document.createElement("strong"); name.textContent = r.name;
+    var ver = document.createElement("span"); ver.className = "verified"; ver.textContent = "✓ Verified player";
+    who.append(name, ver); head.append(av, who);
+    var stars = document.createElement("div"); stars.className = "stars-row"; stars.textContent = starText(r.rating);
+    stars.setAttribute("aria-label", r.rating + " out of 5 stars");
+    var text = document.createElement("p"); text.textContent = r.text;
+    var when = document.createElement("time"); var d = new Date(r.date * 1000);
+    when.dateTime = d.toISOString(); when.textContent = d.toLocaleDateString(undefined, { month: "short", year: "numeric" });
+    card.append(head, stars, text, when);
+    return card;
+  }
+
+  function renderReviews() {
+    if (!allReviews.length) return;
+    revList.innerHTML = "";
+    allReviews.slice(0, revShown).forEach(function (r) { revList.append(reviewCard(r)); });
+    document.querySelector("[data-rev-more]").hidden = allReviews.length <= revShown;
+  }
+
+  function loadReviews() {
+    fetch(REVIEWS_URL).then(function (r) { return r.json(); }).then(function (data) {
+      allReviews = data.reviews || [];
+      if (data.count) {
+        document.querySelector("[data-rev-avg]").textContent = data.average.toFixed(1);
+        document.querySelector("[data-rev-stars]").textContent = starText(Math.round(data.average));
+        document.querySelector("[data-rev-total]").textContent = "from " + data.count + " verified player" + (data.count === 1 ? "" : "s");
+        document.querySelector("[data-rev-summary]").hidden = false;
+      }
+      renderReviews();
+    }).catch(function () {});
+  }
+
+  function renderReviewForm() {
+    var signedIn = !!getIdentity();
+    var canSign = SIGNIN_ON;
+    document.querySelector("[data-rev-out]").hidden = signedIn || !canSign;
+    document.querySelector("[data-rev-form]").hidden = !signedIn;
+    if (!canSign) document.querySelector("[data-rev-intro]").textContent = "Reviews open soon.";
+  }
+
+  document.querySelector("[data-rev-more]").addEventListener("click", function () { revShown += 6; renderReviews(); });
+  document.querySelector("[data-rev-signin]").addEventListener("click", function () { openChatAfterSignin = false; openSignin(); });
+  document.getElementById("rev-text").addEventListener("input", function () {
+    document.querySelector("[data-rev-chars]").textContent = this.value.length;
+  });
+  document.querySelector("[data-rev-form]").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var form = this, id = getIdentity();
+    var rating = form.querySelector("input[name=rating]:checked");
+    var text = form.text.value.trim();
+    revStatus.classList.remove("is-error");
+    if (!rating) { revStatus.textContent = "Tap the stars to pick a rating."; revStatus.classList.add("is-error"); return; }
+    if (text.length < 10) { revStatus.textContent = "Write a little more — at least 10 characters."; revStatus.classList.add("is-error"); return; }
+    if (!id) { renderReviewForm(); return; }
+    var btn = form.querySelector("button[type=submit]"); btn.disabled = true;
+    revStatus.textContent = "Posting…";
+    fetch(REVIEWS_URL, {
+      method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ identifier: id.identifier, identifier_hash: id.identifier_hash, rating: +rating.value, text: text })
+    }).then(function (r) { return r.json().then(function (b) { return { ok: r.ok, status: r.status, body: b }; }); })
+      .then(function (res) {
+        btn.disabled = false;
+        if (res.ok) {
+          form.reset(); document.querySelector("[data-rev-chars]").textContent = "0";
+          revStatus.textContent = "Thanks! Your review will show here once our team checks it.";
+          return;
+        }
+        revStatus.classList.add("is-error");
+        if (res.status === 409 || res.status === 401) {
+          // Signed in before reviews existed (or the sign-in is stale): sign in once more.
+          store(false, ID_KEY, null); identityApplied = false; renderAccount(); renderReferral(); renderReviewForm();
+          revStatus.textContent = "Please sign in again with Google, then post your review.";
+          openSignin();
+          return;
+        }
+        revStatus.textContent = res.body.error || "Couldn't post your review. Please try again.";
+      })
+      .catch(function () { btn.disabled = false; revStatus.classList.add("is-error"); revStatus.textContent = "Couldn't post your review. Check your connection and try again."; });
+  });
+  loadReviews();
+  renderReviewForm();
+
+  // ===== Promotions: claims + referrals =====
+  // Claims don't pay anything automatically: they open the player's chat and tag it so the
+  // team sees what's being claimed (contact attribute "claim_request" + a conversation label).
+  var CLAIMS = {
+    "first-deposit-bonus": "100% first-deposit bonus",
+    "free-play": "$3 Free Play",
+    "daily-reward": "Daily streak reward",
+    "referral-bonus": "Referral $20"
+  };
+  var REF_KEY = "jh_referred_by";
+  var REF_RE = /^JH-[A-Z0-9]{6}$/;
+  var pendingClaim = null;
+  var myRefCode = null;
+
+  function toast(text) {
+    var t = document.createElement("div");
+    t.className = "claim-toast"; t.setAttribute("role", "status"); t.textContent = text;
+    document.body.appendChild(t);
+    setTimeout(function () { t.remove(); }, 5000);
+  }
+
+  // Stable, shareable code for a signed-in player, e.g. JH-7K2QXD (from their chat identity).
+  function makeRefCode(identifier) {
+    var alphabet = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+    return crypto.subtle.digest("SHA-256", new TextEncoder().encode("jh-ref:" + identifier)).then(function (buf) {
+      var b = new Uint8Array(buf), code = "";
+      for (var i = 0; i < 6; i++) code += alphabet[b[i] % alphabet.length];
+      return "JH-" + code;
+    });
+  }
+
+  function syncPlayerAttributes() {
+    if (!window.$chatwoot || !getIdentity()) return;
+    var attrs = {};
+    if (myRefCode) attrs.referral_code = myRefCode;
+    var ref = store(true, REF_KEY);
+    if (ref && ref !== myRefCode) attrs.referred_by = ref;
+    if (pendingClaim) {
+      attrs.claim_request = CLAIMS[pendingClaim];
+      attrs.claim_requested_at = new Date().toISOString().slice(0, 16).replace("T", " ") + " UTC";
+    }
+    if (Object.keys(attrs).length) window.$chatwoot.setCustomAttributes(attrs);
+    if (pendingClaim) {
+      try { window.$chatwoot.setLabel(pendingClaim); } catch (e) {}
+      pendingClaim = null;
+    }
+  }
+
+  function renderReferral() {
+    var id = getIdentity();
+    var inBox = document.querySelector("[data-ref-in]"), outBox = document.querySelector("[data-ref-out]");
+    if (!SIGNIN_ON || !id) { inBox.hidden = true; outBox.hidden = !SIGNIN_ON; myRefCode = null; return; }
+    makeRefCode(id.identifier).then(function (code) {
+      myRefCode = code;
+      var link = location.origin + "/?ref=" + code;
+      var msg = "Join me at Jackpot Heaven — use my code " + code + " and get a 100% bonus on your first deposit. 18+ ";
+      document.querySelector("[data-ref-code]").textContent = code;
+      document.querySelector('[data-share="whatsapp"]').href = "https://wa.me/?text=" + encodeURIComponent(msg + link);
+      document.querySelector('[data-share="telegram"]').href = "https://t.me/share/url?url=" + encodeURIComponent(link) + "&text=" + encodeURIComponent(msg);
+      document.querySelector('[data-share="sms"]').href = "sms:?&body=" + encodeURIComponent(msg + link);
+      inBox.hidden = false; outBox.hidden = true;
+    });
+  }
+
+  function saveReferrer(code, quiet) {
+    var status = document.querySelector(".ref-status");
+    code = (code || "").trim().toUpperCase();
+    if (!REF_RE.test(code)) { if (!quiet) status.textContent = "That code doesn't look right — it should look like JH-7K2QXD."; return false; }
+    if (code === myRefCode) { if (!quiet) status.textContent = "That's your own code — share it with a friend instead."; return false; }
+    store(false, REF_KEY, code);
+    if (!quiet) status.textContent = "Code " + code + " saved. Mention it when you make your first deposit.";
+    if (window.chatReady) syncPlayerAttributes();
+    return true;
+  }
+
+  // A friend's link (?ref=JH-XXXXXX): remember it, then tidy the address bar.
+  (function () {
+    var m = location.search.match(/[?&]ref=([^&#]+)/);
+    if (!m) return;
+    if (!store(true, REF_KEY)) saveReferrer(decodeURIComponent(m[1]), true);
+    try { history.replaceState(null, "", location.pathname + location.hash); } catch (e) {}
+  })();
+
+  document.querySelectorAll("[data-claim]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      pendingClaim = b.getAttribute("data-claim");
+      if (window.chatReady && getIdentity()) syncPlayerAttributes();
+      toast("Opening your chat — tell us you're claiming the " + CLAIMS[b.getAttribute("data-claim")] + ".");
+      openChat();
+    });
+  });
+  document.querySelector("[data-signin-ref]").addEventListener("click", function () { openChatAfterSignin = false; openSignin(); });
+  document.querySelector("[data-code-form]").addEventListener("submit", function (e) {
+    e.preventDefault();
+    if (saveReferrer(this.code.value)) this.code.value = "";
+  });
+  document.querySelector('[data-share="copy"]').addEventListener("click", function () {
+    var btn = this, link = location.origin + "/?ref=" + myRefCode;
+    var done = function () { btn.textContent = "Copied!"; setTimeout(function () { btn.textContent = "Copy link"; }, 2500); };
+    if (navigator.share && matchMedia("(max-width: 760px)").matches) {
+      navigator.share({ title: "Jackpot Heaven", text: "Use my code " + myRefCode + " for a 100% first-deposit bonus. 18+", url: link }).catch(function () {});
+    } else if (navigator.clipboard) {
+      navigator.clipboard.writeText(link).then(done, function () { document.querySelector(".ref-status").textContent = link; });
+    } else {
+      document.querySelector(".ref-status").textContent = link;
+    }
+  });
+  renderReferral();
+
+  // Chatwoot live chat (self-hosted)
+  if (CHAT_TOKEN) {
+    window.chatwootSettings = {
+      position: "right",
+      type: "standard",
+      launcherTitle: "Chat with us",
+      // With sign-in on, the chat opens only from our buttons (so players sign in first).
+      // Otherwise phones use the sticky "Message us" bar, so the extra bubble is hidden there.
+      hideMessageBubble: SIGNIN_ON || window.matchMedia("(max-width: 760px)").matches
+    };
+    window.addEventListener("chatwoot:ready", function () {
+      window.chatReady = true;
+      applyIdentity();
+      if (window.openChatWhenReady) { window.openChatWhenReady = false; openChat(); }
+    });
+    var s = document.createElement("script");
+    s.src = CHAT_URL + "/packs/js/sdk.js";
+    s.async = true;
+    s.onload = function () {
+      window.chatwootSDK.run({ websiteToken: CHAT_TOKEN, baseUrl: CHAT_URL });
+    };
+    document.body.appendChild(s);
+  }
+</script>
+</body>
+</html>
