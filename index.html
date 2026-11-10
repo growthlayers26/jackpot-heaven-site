@@ -627,7 +627,9 @@
     <h2 id="signin-title">Sign in to chat with us</h2>
     <p class="topup-lead">Sign in once with Google. Your chat and its history stay with you on your phone, computer or any browser.</p>
     <div class="inapp" hidden>
-      <p>Google sign-in doesn't work inside the Facebook or Instagram app. Tap <strong>•••</strong> and choose <strong>Open in browser</strong>, then sign in there.</p>
+      <p>Google doesn't allow sign-in inside the Facebook or Instagram app. Open this page in your browser to sign in and chat with us.</p>
+      <a class="btn btn-primary btn-sm" data-open-browser href="#">Open in browser</a>
+      <p class="inapp-alt" style="margin:12px 0 8px">Didn't open? Tap <strong>•••</strong> at the top and choose <strong>Open in browser</strong>, or copy the link:</p>
       <button class="btn btn-ghost btn-sm" type="button" data-copy-link>Copy link</button>
     </div>
     <div class="gsi-box" id="gsi-button"></div>
@@ -1232,6 +1234,23 @@
     loadGoogle();
   });
   store(false, "jh_chat_skip_signin", null); // clear the old "chat without signing in" choice
+  // Escape the Facebook / Instagram in-app browser, where Google blocks sign-in: Android opens the
+  // page in Chrome with an intent link; iPhone opens it in Safari with the x-safari-https scheme.
+  // Either way the player lands back on this page, ready to sign in.
+  (function () {
+    var btn = signin.querySelector("[data-open-browser]");
+    var ua = navigator.userAgent || "";
+    var here = location.host + location.pathname + location.search;
+    if (/Android/i.test(ua)) {
+      btn.textContent = "Open in Chrome";
+      btn.href = "intent://" + here + "#Intent;scheme=https;package=com.android.chrome;S.browser_fallback_url=" + encodeURIComponent(location.href) + ";end";
+    } else if (/iPhone|iPad|iPod/i.test(ua)) {
+      btn.textContent = "Open in Safari";
+      btn.href = "x-safari-https://" + here;
+    } else {
+      btn.hidden = true;
+    }
+  })();
   signin.querySelector("[data-copy-link]").addEventListener("click", function () {
     var btn = this;
     (navigator.clipboard ? navigator.clipboard.writeText(location.href) : Promise.reject())
