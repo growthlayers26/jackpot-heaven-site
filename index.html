@@ -1155,8 +1155,15 @@
       applyIdentity();
       window.$chatwoot.toggle("open");
     } else {
-      // Chat still loading: open it as soon as it is ready.
+      // Chat still loading: open it as soon as it is ready. If it never loads (blocked by an
+      // ad blocker or a slow connection), don't leave the player stuck: send them to Messenger.
       window.openChatWhenReady = true;
+      setTimeout(function () {
+        if (window.chatReady || !window.openChatWhenReady) return;
+        window.openChatWhenReady = false;
+        toast("Our chat couldn't load in this browser. Opening Messenger instead.");
+        setTimeout(function () { location.href = MESSAGE_URL; }, 1200);
+      }, 6000);
     }
   }
 
