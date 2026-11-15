@@ -585,14 +585,14 @@
       <li><span>100% bonus</span> on your first deposit</li>
       <li><span>$3 Free Play</span> for new players</li>
       <li><span>Refer a friend</span>: get $20</li>
-      <li><span>7-day streak</span>: up to $5 a day</li>
+      <li><span>7-day streak</span>: claim $11 every week</li>
       <li><span>Fast cashouts</span>: up to $500 within 24 hours</li>
     </ul>
     <ul aria-hidden="true">
       <li><span>100% bonus</span> on your first deposit</li>
       <li><span>$3 Free Play</span> for new players</li>
       <li><span>Refer a friend</span>: get $20</li>
-      <li><span>7-day streak</span>: up to $5 a day</li>
+      <li><span>7-day streak</span>: claim $11 every week</li>
       <li><span>Fast cashouts</span>: up to $500 within 24 hours</li>
     </ul>
   </div>
@@ -764,13 +764,13 @@
 
         <article class="promo wide">
           <div>
-            <span class="promo-tag">Daily rewards</span>
-            <h3>7-day streak: $5 on day 7</h3>
-            <p>Deposit on back-to-back days and claim a reward each day. Hit all seven for the <strong>$5</strong> finish.</p>
-            <p class="streak-note">Message us each day you deposit to claim. Miss a day and the streak restarts at Day 1.</p>
-            <div class="cta-row"><button class="btn btn-primary btn-sm" type="button" data-claim="daily-reward">Claim today's reward</button></div>
+            <span class="promo-tag">Weekly reward</span>
+            <h3>7-day streak: claim $11 every 7 days</h3>
+            <p>Deposit on 7 back-to-back days and every day adds to your reward. On day 7, claim it all at once: <strong>$11</strong>.</p>
+            <p class="streak-note">One claim every 7 days, on day 7. Miss a day and the streak restarts at Day 1.</p>
+            <div class="cta-row"><button class="btn btn-primary btn-sm" type="button" data-claim="daily-reward" data-weekly>Claim weekly reward</button></div>
           </div>
-          <ol class="streak" aria-label="Daily rewards by streak day" data-streak>
+          <ol class="streak" aria-label="Streak reward built up each day" data-streak>
             <li><small>Day 1</small><b>$0.25</b></li>
             <li><small>Day 2</small><b>$0.50</b></li>
             <li><small>Day 3</small><b>$0.75</b></li>
@@ -916,7 +916,7 @@
             <li>100% match on your first deposit, one per player</li>
             <li>$3 Free Play for new players; its winnings cash out up to $10</li>
             <li>Refer a friend: $20 when their first deposit is $20 or more</li>
-            <li>Daily streak: $0.25 up to $5 on day 7, on days you deposit</li>
+            <li>7-day streak: deposit 7 days in a row, claim $11 once every 7 days</li>
             <li>Claim in chat and our team adds every bonus by hand</li>
           </ul>
         </div>
@@ -958,8 +958,8 @@
         <p>Sign in to get your personal code and share it. When your friend enters it (or opens your link) before their first deposit, and that first deposit is $20 or more, we add $20 for you and the 100% first-deposit bonus for them.</p>
       </details>
       <details>
-        <summary>How does the daily streak work?</summary>
-        <p>Each day you deposit, message us to claim that day's reward: $0.25, $0.50, $0.75, $1, $1.50, $2, then $5 on day 7. Skip a day and the streak starts again at day 1.</p>
+        <summary>How does the 7-day streak work?</summary>
+        <p>Each day you deposit builds your reward: $0.25, $0.50, $0.75, $1, $1.50, $2, then $5 on day 7. On day 7 message us once to claim the full $11. You can claim once every 7 days. Skip a day and the streak starts again at day 1.</p>
       </details>
       <details>
         <summary>Do I need to be 18?</summary>
@@ -1494,7 +1494,7 @@
   var CLAIMS = {
     "first-deposit-bonus": "100% first-deposit bonus",
     "free-play": "$3 Free Play",
-    "daily-reward": "Daily streak reward",
+    "daily-reward": "7-day streak reward ($11)",
     "referral-bonus": "Referral $20"
   };
   var REF_KEY = "jh_referred_by";
@@ -1573,6 +1573,12 @@
 
   document.querySelectorAll("[data-claim]").forEach(function (b) {
     b.addEventListener("click", function () {
+      if (b.hasAttribute("data-weekly")) {
+        var last = 0; try { last = +localStorage.getItem("jh_weekly_claim") || 0; } catch (e) {}
+        var left = last + 7 * 864e5 - Date.now();
+        if (left > 0) { toast("You already claimed this week. Next claim in " + Math.ceil(left / 864e5) + " day(s)."); return; }
+        try { localStorage.setItem("jh_weekly_claim", String(Date.now())); } catch (e) {}
+      }
       pendingClaim = b.getAttribute("data-claim");
       if (window.chatReady && getIdentity()) syncPlayerAttributes();
       toast("Opening your chat. Tell us you're claiming the " + CLAIMS[b.getAttribute("data-claim")] + ".");
