@@ -1231,7 +1231,11 @@
         renderReviewForm();
         say("");
         applyIdentity();
-        if (openChatAfterSignin) {
+        if (claimAfterSignin) {
+          var k = claimAfterSignin; claimAfterSignin = null;
+          signin.close();
+          sendClaim(k);
+        } else if (openChatAfterSignin) {
           openChatAfterSignin = false;
           signin.close();
           openChat();
@@ -1254,7 +1258,7 @@
     b.addEventListener("click", function (e) { e.preventDefault(); openChatAfterSignin = false; openSignin(); });
   });
   signin.addEventListener("click", function (e) { if (e.target === signin) signin.close(); });
-  signin.addEventListener("close", function () { openChatAfterSignin = false; });
+  signin.addEventListener("close", function () { openChatAfterSignin = false; if (getIdentity() === null) claimAfterSignin = null; });
   signin.querySelectorAll("[data-message]").forEach(function (a) { a.addEventListener("click", function () { signin.close(); }); });
   signin.querySelector("[data-signout]").addEventListener("click", function () {
     store(false, ID_KEY, null);
@@ -1525,15 +1529,7 @@
     if (myRefCode) attrs.referral_code = myRefCode;
     var ref = store(true, REF_KEY);
     if (ref && ref !== myRefCode) attrs.referred_by = ref;
-    if (pendingClaim) {
-      attrs.claim_request = CLAIMS[pendingClaim];
-      attrs.claim_requested_at = new Date().toISOString().slice(0, 16).replace("T", " ") + " UTC";
-    }
     if (Object.keys(attrs).length) window.$chatwoot.setCustomAttributes(attrs);
-    if (pendingClaim) {
-      try { window.$chatwoot.setLabel(pendingClaim); } catch (e) {}
-      pendingClaim = null;
-    }
   }
 
   function renderReferral() {
@@ -1571,19 +1567,32 @@
     try { history.replaceState(null, "", location.pathname + location.hash); } catch (e) {}
   })();
 
+  // Claims go to our server, which checks the limits (one-time offers, 7 days for the streak)
+  // and drops a note + label into the player's chat so an agent always sees it, even if the
+  // player never types anything.
+  var claimAfterSignin = null;
+  function sendClaim(kind, btn) {
+    var id = getIdentity();
+    if (!id) { claimAfterSignin = kind; openChatAfterSignin = false; openSignin(); return; }
+    if (btn) btn.disabled = true;
+    fetch(CHAT_URL + "/jh-auth/claim", {
+      method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ identifier: id.identifier, identifier_hash: id.identifier_hash, kind: kind,
+                             referred_by: store(true, REF_KEY) || "" })
+    }).then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
+      .then(function (res) {
+        if (res.ok) {
+          toast("Claim sent! Our team will load your " + res.j.title + " after checking your payment.");
+          openChat();
+        } else {
+          toast(res.j.error || "Couldn't send your claim. Please message us in chat.");
+        }
+      })
+      .catch(function () { toast("Couldn't send your claim. Check your connection and try again."); })
+      .then(function () { if (btn) btn.disabled = false; });
+  }
   document.querySelectorAll("[data-claim]").forEach(function (b) {
-    b.addEventListener("click", function () {
-      if (b.hasAttribute("data-weekly")) {
-        var last = 0; try { last = +localStorage.getItem("jh_weekly_claim") || 0; } catch (e) {}
-        var left = last + 7 * 864e5 - Date.now();
-        if (left > 0) { toast("You already claimed this week. Next claim in " + Math.ceil(left / 864e5) + " day(s)."); return; }
-        try { localStorage.setItem("jh_weekly_claim", String(Date.now())); } catch (e) {}
-      }
-      pendingClaim = b.getAttribute("data-claim");
-      if (window.chatReady && getIdentity()) syncPlayerAttributes();
-      toast("Opening your chat. Tell us you're claiming the " + CLAIMS[b.getAttribute("data-claim")] + ".");
-      openChat();
-    });
+    b.addEventListener("click", function () { sendClaim(b.getAttribute("data-claim"), b); });
   });
   document.querySelector("[data-signin-ref]").addEventListener("click", function () { openChatAfterSignin = false; openSignin(); });
   document.querySelector("[data-code-form]").addEventListener("submit", function (e) {
