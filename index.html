@@ -1574,11 +1574,16 @@
   function sendClaim(kind, btn) {
     var id = getIdentity();
     if (!id) { claimAfterSignin = kind; openChatAfterSignin = false; openSignin(); return; }
+    var ref = store(true, REF_KEY) || "";
+    if (!ref && (kind === "first-deposit-bonus" || kind === "free-play")) {
+      var ans = window.prompt("Did a friend refer you? Type their name or referral code (like JH-7K2QXD) so they get their $20. Leave empty if not.", "");
+      ref = (ans || "").trim().slice(0, 60);
+    }
     if (btn) btn.disabled = true;
     fetch(CHAT_URL + "/jh-auth/claim", {
       method: "POST", headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ identifier: id.identifier, identifier_hash: id.identifier_hash, kind: kind,
-                             referred_by: store(true, REF_KEY) || "" })
+                             referred_by: ref })
     }).then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
       .then(function (res) {
         if (res.ok) {
