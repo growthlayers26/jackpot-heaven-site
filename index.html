@@ -309,6 +309,9 @@
   .streak .top { border-color: var(--gold); background: rgba(244,193,60,.12); }
   .streak .top b { color: var(--gold); }
   .streak-note { font-size: 13px !important; }
+  .ref-inline { display: block; width: 100%; max-width: 360px; margin: 0 0 12px; padding: 10px 12px; border-radius: 10px;
+    border: 1px solid var(--line); background: var(--surface-2); color: inherit; font: inherit; font-size: 14px; }
+  .ref-inline:focus { outline: none; border-color: var(--gold); }
   .ref-box { border: 1px dashed var(--line-strong); border-radius: 12px; padding: 14px; margin: 0 0 16px; }
   .ref-code { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 12px; }
   .ref-code code { font: 700 20px/1 Poppins, sans-serif; letter-spacing: .06em; color: var(--gold); }
@@ -721,6 +724,7 @@
             <span class="promo-tag">New players</span>
             <h3>100% first-deposit bonus</h3>
             <p>We double your first deposit. Whatever you load the first time, we match it dollar for dollar.</p>
+            <input class="ref-inline" type="text" maxlength="60" autocomplete="off" data-ref-inline placeholder="Referred by a friend? Their name or code (optional)" aria-label="Who referred you (optional)">
             <div class="cta-row">
               <button class="btn btn-primary" type="button" data-topup>Top up now</button>
               <button class="btn btn-ghost" type="button" data-claim="first-deposit-bonus">Claim in chat</button>
@@ -737,6 +741,7 @@
           <span class="promo-tag">Welcome gift</span>
           <h3>$3 Free Play</h3>
           <p>Try any game on us. Win with it and cash out up to <strong>$10</strong>. No deposit needed.</p>
+          <input class="ref-inline" type="text" maxlength="60" autocomplete="off" data-ref-inline placeholder="Referred by a friend? Their name or code (optional)" aria-label="Who referred you (optional)">
           <div class="cta-row"><button class="btn btn-primary btn-sm" type="button" data-claim="free-play">Claim $3 Free Play</button></div>
         </article>
 
@@ -1234,7 +1239,7 @@
         if (claimAfterSignin) {
           var k = claimAfterSignin; claimAfterSignin = null;
           signin.close();
-          sendClaim(k);
+          sendClaim(k, claimBtnAfterSignin);
         } else if (openChatAfterSignin) {
           openChatAfterSignin = false;
           signin.close();
@@ -1570,15 +1575,12 @@
   // Claims go to our server, which checks the limits (one-time offers, 7 days for the streak)
   // and drops a note + label into the player's chat so an agent always sees it, even if the
   // player never types anything.
-  var claimAfterSignin = null;
+  var claimAfterSignin = null, claimBtnAfterSignin = null;
   function sendClaim(kind, btn) {
     var id = getIdentity();
-    if (!id) { claimAfterSignin = kind; openChatAfterSignin = false; openSignin(); return; }
-    var ref = store(true, REF_KEY) || "";
-    if (!ref && (kind === "first-deposit-bonus" || kind === "free-play")) {
-      var ans = window.prompt("Did a friend refer you? Type their name or referral code (like JH-7K2QXD) so they get their $20. Leave empty if not.", "");
-      ref = (ans || "").trim().slice(0, 60);
-    }
+    if (!id) { claimAfterSignin = kind; claimBtnAfterSignin = btn; openChatAfterSignin = false; openSignin(); return; }
+    var card = btn && btn.closest(".promo"), box = card && card.querySelector("[data-ref-inline]");
+    var ref = ((box && box.value) || "").trim().slice(0, 60) || store(true, REF_KEY) || "";
     if (btn) btn.disabled = true;
     fetch(CHAT_URL + "/jh-auth/claim", {
       method: "POST", headers: { "Content-Type": "application/json" },
