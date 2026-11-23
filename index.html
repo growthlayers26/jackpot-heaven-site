@@ -767,7 +767,7 @@
             <span class="promo-tag">Weekly reward</span>
             <h3>7-day streak: claim $11 every 7 days</h3>
             <p>Deposit on 7 back-to-back days and every day adds to your reward. On day 7, claim it all at once: <strong>$11</strong>.</p>
-            <p class="streak-note">One claim every 7 days, on day 7. Miss a day and the streak restarts at Day 1.</p>
+            <p class="streak-note">Tap claim on day 7, after your 7th deposit in a row. Our team checks your deposits and loads the $11. Miss a day and the streak restarts at Day 1.</p>
             <div class="cta-row"><button class="btn btn-primary btn-sm" type="button" data-claim="daily-reward" data-weekly>Claim weekly reward</button></div>
           </div>
           <ol class="streak" aria-label="Streak reward built up each day" data-streak>
@@ -1582,7 +1582,8 @@
     }).then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
       .then(function (res) {
         if (res.ok) {
-          toast("Claim sent! Our team will load your " + res.j.title + " after checking your payment.");
+          toast(res.j.already ? "Your " + res.j.title + " request is already with our team. Opening your chat."
+                              : "Request sent! Make your deposit in chat and our team will load your " + res.j.title + ".");
           openChat();
         } else {
           toast(res.j.error || "Couldn't send your claim. Please message us in chat.");
