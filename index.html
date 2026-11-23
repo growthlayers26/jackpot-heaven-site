@@ -743,7 +743,7 @@
         <article class="promo">
           <span class="promo-tag">Refer &amp; earn</span>
           <h3>Get $20 for every friend</h3>
-          <p>When a friend you invite makes a first deposit of <strong>$20 or more</strong>, you get <strong>$20</strong>. They get the 100% first-deposit bonus.</p>
+          <p>When a friend you invite makes a first deposit of <strong>$20 or more</strong>, you get <strong>$20</strong>. The 100% first-deposit bonus is not available for referred players.</p>
           <div class="ref-box" data-ref-in hidden>
             <div class="ref-code"><span style="color:var(--muted);font-size:13px">Your code</span><code data-ref-code></code></div>
             <div class="share-row">
@@ -913,7 +913,7 @@
         <div class="policy">
           <h3>Bonuses</h3>
           <ul>
-            <li>100% match on your first deposit, one per player</li>
+            <li>100% match on your first deposit, one per player; not available for referred players</li>
             <li>$3 Free Play for new players; its winnings cash out up to $10</li>
             <li>Refer a friend: $20 when their first deposit is $20 or more</li>
             <li>7-day streak: deposit 7 days in a row, claim $11 once every 7 days</li>
@@ -955,7 +955,7 @@
       </details>
       <details>
         <summary>How does refer-a-friend work?</summary>
-        <p>Sign in to get your personal code and share it. When your friend enters it (or opens your link) before their first deposit, and that first deposit is $20 or more, we add $20 for you and the 100% first-deposit bonus for them.</p>
+        <p>Sign in to get your personal code and share it. When your friend enters it (or opens your link) before their first deposit, and that first deposit is $20 or more, we add $20 for you. The 100% first-deposit bonus is not available for referred players.</p>
       </details>
       <details>
         <summary>How does the 7-day streak work?</summary>
@@ -1539,7 +1539,7 @@
     makeRefCode(id.identifier).then(function (code) {
       myRefCode = code;
       var link = location.origin + "/?ref=" + code;
-      var msg = "Join me at Jackpot Heaven! Use my code " + code + " and get a 100% bonus on your first deposit. 18+ ";
+      var msg = "Join me at Jackpot Heaven! Use my code " + code + " when you sign up. 18+ ";
       document.querySelector("[data-ref-code]").textContent = code;
       document.querySelector('[data-share="whatsapp"]').href = "https://wa.me/?text=" + encodeURIComponent(msg + link);
       document.querySelector('[data-share="telegram"]').href = "https://t.me/share/url?url=" + encodeURIComponent(link) + "&text=" + encodeURIComponent(msg);
@@ -1609,7 +1609,7 @@
     var btn = this, link = location.origin + "/?ref=" + myRefCode;
     var done = function () { btn.textContent = "Copied!"; setTimeout(function () { btn.textContent = "Copy link"; }, 2500); };
     if (navigator.share && matchMedia("(max-width: 760px)").matches) {
-      navigator.share({ title: "Jackpot Heaven", text: "Use my code " + myRefCode + " for a 100% first-deposit bonus. 18+", url: link }).catch(function () {});
+      navigator.share({ title: "Jackpot Heaven", text: "Join me at Jackpot Heaven! Use my code " + myRefCode + " when you sign up. 18+", url: link }).catch(function () {});
     } else if (navigator.clipboard) {
       navigator.clipboard.writeText(link).then(done, function () { document.querySelector(".ref-status").textContent = link; });
     } else {
