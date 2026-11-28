@@ -1247,6 +1247,7 @@
         renderAccount();
         renderReferral();
         renderReviewForm();
+        sendReferral(true);
         say("");
         applyIdentity();
         if (claimAfterSignin) {
@@ -1635,13 +1636,27 @@
     });
   }
 
+  // Tell the server who referred this player (once signed in), so agents see it before the first deposit.
+  function sendReferral(quiet) {
+    var id = getIdentity(), code = store(true, REF_KEY), status = document.querySelector(".ref-status");
+    if (!id || !code || !CHAT_URL) return;
+    fetch(CHAT_URL + "/jh-auth/referral", { method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ identifier: id.identifier, identifier_hash: id.identifier_hash, code: code }) })
+      .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
+      .then(function (res) {
+        if (res.ok) { if (!quiet && status) status.textContent = res.j.already ? "Your referral is already saved." : "Saved! " + res.j.referrer + " referred you."; }
+        else { if (status && !quiet) status.textContent = res.j.error || "Couldn't save that code."; if (res.j && /own code|couldn't find|look right/i.test(res.j.error || "")) store(false, REF_KEY, null); }
+      }).catch(function () {});
+  }
+
   function saveReferrer(code, quiet) {
     var status = document.querySelector(".ref-status");
     code = (code || "").trim().toUpperCase();
     if (!REF_RE.test(code)) { if (!quiet) status.textContent = "That code doesn't look right. It should look like JH-7K2QXD."; return false; }
     if (code === myRefCode) { if (!quiet) status.textContent = "That's your own code. Share it with a friend instead."; return false; }
     store(false, REF_KEY, code);
-    if (!quiet) status.textContent = "Code " + code + " saved. Mention it when you make your first deposit.";
+    if (!quiet) status.textContent = getIdentity() ? "Checking your code…" : "Code " + code + " saved. Sign in so we can link it to your account.";
+    sendReferral(quiet);
     if (window.chatReady) syncPlayerAttributes();
     return true;
   }
