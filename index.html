@@ -308,6 +308,9 @@
   .streak b { font: 600 14px/1 Poppins, sans-serif; }
   .streak .top { border-color: var(--gold); background: rgba(244,193,60,.12); }
   .streak .top b { color: var(--gold); }
+  .streak li.done { border-color: var(--gold); background: rgba(244,193,60,.18); }
+  .streak li.done b { color: var(--gold); }
+  .streak-status { font-weight: 600; color: var(--gold); margin: 6px 0 12px; }
   .streak-note { font-size: 13px !important; }
   .ref-inline { display: block; width: 100%; max-width: 360px; margin: 0 0 12px; padding: 10px 12px; border-radius: 10px;
     border: 1px solid var(--line); background: var(--surface-2); color: inherit; font: inherit; font-size: 14px; }
@@ -772,16 +775,17 @@
             <span class="promo-tag">Weekly reward</span>
             <h3>7-day streak: $5 every 7 days</h3>
             <p>Deposit on 7 back-to-back days and claim <strong>$5</strong> on day 7.</p>
-            <p class="streak-note">Tap claim on day 7, after your 7th deposit in a row. Our team checks your deposits and loads the $5. Miss a day and the streak restarts at Day 1.</p>
+            <p class="streak-note">Every deposit our team loads counts as a day (Free Play doesn't count). Days reset at midnight Eastern. Miss a day and the streak restarts at Day 1.</p>
+            <p class="streak-status" data-streak-status hidden></p>
             <div class="cta-row"><button class="btn btn-primary btn-sm" type="button" data-claim="daily-reward" data-weekly>Claim weekly reward</button></div>
           </div>
           <ol class="streak" aria-label="Streak reward built up each day" data-streak>
-            <li><small>Day 1</small><b>✓</b></li>
-            <li><small>Day 2</small><b>✓</b></li>
-            <li><small>Day 3</small><b>✓</b></li>
-            <li><small>Day 4</small><b>✓</b></li>
-            <li><small>Day 5</small><b>✓</b></li>
-            <li><small>Day 6</small><b>✓</b></li>
+            <li><small>Day 1</small><b>1</b></li>
+            <li><small>Day 2</small><b>2</b></li>
+            <li><small>Day 3</small><b>3</b></li>
+            <li><small>Day 4</small><b>4</b></li>
+            <li><small>Day 5</small><b>5</b></li>
+            <li><small>Day 6</small><b>6</b></li>
             <li class="top"><small>Day 7</small><b>$5</b></li>
           </ol>
         </article>
@@ -1537,7 +1541,29 @@
     if (Object.keys(attrs).length) window.$chatwoot.setCustomAttributes(attrs);
   }
 
+  // Live 7-day streak: deposit days come from our team's "Loaded $X" replies in chat.
+  function renderStreak() {
+    var id = getIdentity(), status = document.querySelector("[data-streak-status]");
+    var items = document.querySelectorAll("[data-streak] li"), btn = document.querySelector('[data-claim="daily-reward"]');
+    items.forEach(function (li) { li.classList.remove("done"); });
+    if (!id || !CHAT_URL) { status.hidden = true; btn.textContent = "Claim weekly reward"; return; }
+    fetch(CHAT_URL + "/jh-auth/streak", { method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ identifier: id.identifier, identifier_hash: id.identifier_hash }) })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (j) {
+        if (!j) return;
+        for (var i = 0; i < j.days && i < items.length; i++) items[i].classList.add("done");
+        status.hidden = false;
+        if (j.can_claim) { status.textContent = "Streak complete! Claim your $5."; btn.textContent = "Claim $5 now"; }
+        else {
+          status.textContent = "Your streak: day " + j.days + " of 7" + (j.deposited_today ? " (today counted)" : j.days ? ". Deposit today to keep it going." : ". Make a deposit to start.");
+          btn.textContent = "Day " + j.days + " of 7";
+        }
+      }).catch(function () {});
+  }
+
   function renderReferral() {
+    renderStreak();
     var id = getIdentity();
     var inBox = document.querySelector("[data-ref-in]"), outBox = document.querySelector("[data-ref-out]");
     if (!SIGNIN_ON || !id) { inBox.hidden = true; outBox.hidden = !SIGNIN_ON; myRefCode = null; return; }
