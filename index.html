@@ -310,6 +310,8 @@
   .streak .top b { color: var(--gold); }
   .streak li.done { border-color: var(--gold); background: rgba(244,193,60,.18); }
   .streak li.done b { color: var(--gold); }
+  .optin { display: flex; gap: 10px; align-items: flex-start; margin: 4px 0 14px; font-size: 14px; color: var(--muted); cursor: pointer; text-align: left; }
+  .optin input { width: 20px; height: 20px; margin: 0; flex: none; accent-color: var(--gold); }
   .streak-status { font-weight: 600; color: var(--gold); margin: 6px 0 12px; }
   .streak-note { font-size: 13px !important; }
   .ref-inline { display: block; width: 100%; max-width: 360px; margin: 0 0 12px; padding: 10px 12px; border-radius: 10px;
@@ -659,6 +661,7 @@
       <p class="inapp-alt" style="margin:12px 0 8px">Didn't open? Tap <strong>•••</strong> at the top and choose <strong>Open in browser</strong>, or copy the link:</p>
       <button class="btn btn-ghost btn-sm" type="button" data-copy-link>Copy link</button>
     </div>
+    <label class="optin"><input type="checkbox" data-optin> <span>Email me bonuses, streak reminders and promos. Unsubscribe anytime.</span></label>
     <div class="gsi-box" id="gsi-button"></div>
   </div>
   <div class="signin-state" hidden>
@@ -668,13 +671,14 @@
       <img alt="" data-acct-img hidden>
       <div><strong data-acct-name></strong><small data-acct-email></small></div>
     </div>
+    <label class="optin"><input type="checkbox" data-optin-acct> <span>Email me bonuses, streak reminders and promos</span></label>
     <div class="signin-actions">
       <a class="btn btn-primary" data-message href="#">Open my chat</a>
       <button class="btn btn-ghost" type="button" data-signout>Sign out</button>
     </div>
   </div>
   <p class="signin-msg" role="status" aria-live="polite"></p>
-  <p class="topup-note">18+ only. We use your Google name and email only to keep your chat history.</p>
+  <p class="topup-note">18+ only. We use your Google name and email to keep your chat history, send our team's replies when you're offline, and, only if you opt in, to email you promos.</p>
 </dialog>
 
 <main>
@@ -1229,7 +1233,7 @@
     fetch(AUTH_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ credential: resp.credential })
+      body: JSON.stringify({ credential: resp.credential, marketing: !!(document.querySelector("[data-optin]") || {}).checked })
     })
       .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
       .then(function (id) {
@@ -1562,8 +1566,31 @@
       }).catch(function () {});
   }
 
+  // Email opt-in switch in the account panel
+  function renderPrefs() {
+    var id = getIdentity(), box = document.querySelector("[data-optin-acct]");
+    if (!box || !id || !CHAT_URL) return;
+    fetch(CHAT_URL + "/jh-auth/prefs", { method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ identifier: id.identifier, identifier_hash: id.identifier_hash }) })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (j) { if (j) box.checked = !!j.marketing; }).catch(function () {});
+  }
+  (function () {
+    var box = document.querySelector("[data-optin-acct]");
+    if (!box) return;
+    box.addEventListener("change", function () {
+      var id = getIdentity(); if (!id) return;
+      fetch(CHAT_URL + "/jh-auth/prefs", { method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ identifier: id.identifier, identifier_hash: id.identifier_hash, marketing: box.checked }) })
+        .then(function (r) { return r.json(); })
+        .then(function (j) { box.checked = !!j.marketing; toast(j.marketing ? "You're in! We'll email you bonuses and reminders." : "Done. No more promo emails."); })
+        .catch(function () { box.checked = !box.checked; toast("Couldn't save. Please try again."); });
+    });
+  })();
+
   function renderReferral() {
     renderStreak();
+    renderPrefs();
     var id = getIdentity();
     var inBox = document.querySelector("[data-ref-in]"), outBox = document.querySelector("[data-ref-out]");
     if (!SIGNIN_ON || !id) { inBox.hidden = true; outBox.hidden = !SIGNIN_ON; myRefCode = null; return; }
