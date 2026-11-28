@@ -310,6 +310,11 @@
   .streak .top b { color: var(--gold); }
   .streak li.done { border-color: var(--gold); background: rgba(244,193,60,.18); }
   .streak li.done b { color: var(--gold); }
+  .optin-nudge { position: fixed; left: 16px; right: 16px; bottom: 96px; z-index: 60; max-width: 420px; margin: 0 auto;
+    background: var(--surface-2); border: 1px solid var(--gold); border-radius: 16px; padding: 16px; box-shadow: 0 14px 40px rgba(0,0,0,.5); }
+  .optin-nudge p { margin: 0 0 12px; font-size: 15px; }
+  .optin-nudge div { display: flex; gap: 10px; }
+  @media (min-width: 761px) { .optin-nudge { left: auto; right: 24px; bottom: 24px; } }
   .optin { display: flex; gap: 10px; align-items: flex-start; margin: 4px 0 14px; font-size: 14px; color: var(--muted); cursor: pointer; text-align: left; }
   .optin input { width: 20px; height: 20px; margin: 0; flex: none; accent-color: var(--gold); }
   .streak-status { font-weight: 600; color: var(--gold); margin: 6px 0 12px; }
@@ -1573,7 +1578,31 @@
     fetch(CHAT_URL + "/jh-auth/prefs", { method: "POST", headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ identifier: id.identifier, identifier_hash: id.identifier_hash }) })
       .then(function (r) { return r.ok ? r.json() : null; })
-      .then(function (j) { if (j) box.checked = !!j.marketing; }).catch(function () {});
+      .then(function (j) { if (j) { box.checked = !!j.marketing; if (!j.marketing) showOptinNudge(); } }).catch(function () {});
+  }
+  // Gentle one-tap opt-in prompt for signed-in players who haven't turned email on (at most every 3 days)
+  var nudgeShown = false;
+  function showOptinNudge() {
+    if (nudgeShown || document.querySelector("dialog[open]")) return;
+    var last = 0; try { last = +localStorage.getItem("jh_optin_nudge") || 0; } catch (e) {}
+    if (Date.now() - last < 3 * 864e5) return;
+    nudgeShown = true;
+    setTimeout(function () {
+      if (document.querySelector("dialog[open]")) return;
+      var n = document.createElement("div");
+      n.className = "optin-nudge"; n.setAttribute("role", "dialog"); n.setAttribute("aria-label", "Email reminders");
+      n.innerHTML = '<p><strong>Never miss your $5 streak.</strong> Get streak reminders and bonus alerts by email.</p>' +
+        '<div><button class="btn btn-primary btn-sm" type="button" data-nudge-on>Turn on</button>' +
+        '<button class="btn btn-ghost btn-sm" type="button" data-nudge-x>Not now</button></div>';
+      document.body.appendChild(n);
+      var close = function () { try { localStorage.setItem("jh_optin_nudge", String(Date.now())); } catch (e) {} n.remove(); };
+      n.querySelector("[data-nudge-x]").onclick = close;
+      n.querySelector("[data-nudge-on]").onclick = function () {
+        var box = document.querySelector("[data-optin-acct]");
+        if (box) { box.checked = true; box.dispatchEvent(new Event("change")); }
+        close();
+      };
+    }, 6000);
   }
   (function () {
     var box = document.querySelector("[data-optin-acct]");
